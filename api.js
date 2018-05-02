@@ -415,7 +415,7 @@ router.post('/invoice/sendInvoice/', auth.ensureLoggedIn(),
       p1.then(function (r) {
 
         let data = {
-          subject: '[Invoice] #' + iHistory.invoiceYM + ' - That Clean Girl Service',
+          subject: '[Invoice] #' + iHistory.invoiceYM + ' - Bubble Bubble Cleaning Service',
           invoice: iHistory,
         }
         let pdfHtml = Util.generateHtml("/tmpl/invoice_pdf.ejs", data);
