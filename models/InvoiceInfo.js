@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const InvoiceStatus = require('../constant').InvoiceStatus;
 
 const InvoiceInfoSchema = new Schema({
-  status: {type: Number, default: InvoiceStatus.Pending},
+  status: { type: Number, default: InvoiceStatus.Pending },
   clientId: String,
   clientRef: String,
   clientName: String,

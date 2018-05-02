@@ -16,7 +16,7 @@ const InvoiceHistorySchema = new Schema({
   invoiceYM: String,
   items: {
     type: Array,
-    default:[]
+    default: []
   },
   total: Number,
   gst: Number,

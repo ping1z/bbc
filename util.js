@@ -40,7 +40,7 @@ module.exports.sendEmail = function (to, subject, html, attachments, cb) {
 
 module.exports.generateHtml = function (tmplPath, data) {
   data = _.assignIn({
-    toAusDateStr: function(d){
+    toAusDateStr: function (d) {
       //return d;
       d = toAusTime(new Date(d));
       return d.getUTCFullYear() + "-" + (d.getUTCMonth() + 1) + "-" + d.getUTCDate();

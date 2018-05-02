@@ -41,7 +41,7 @@ router.get('/notify/getNotifications', auth.ensureLoggedIn(),
   }
 );
 
-router.get('/notify/getNotificationGroups',// auth.ensureLoggedIn(),
+router.get('/notify/getNotificationGroups', auth.ensureLoggedIn(),
   function (req, res) {
     let groups = {
       birthday: [],
@@ -71,10 +71,10 @@ router.post('/saveOneOffService', auth.ensureLoggedIn(),
     if (!req.user.roles[USER_ROLES.ROLE_ADMIN] && !req.user.roles[USER_ROLES.ROLE_MANAGER]) {
       res.send(500, "Action not allowed.");
       return;
-    } 
-    
+    }
+
     let sInfo = new ServiceInfo(req.body.serviceInfo);
-    let p = ServiceInfo.findByIdAndUpdate(sInfo._id, sInfo, {upsert: true});
+    let p = ServiceInfo.findByIdAndUpdate(sInfo._id, sInfo, { upsert: true });
 
     p.then(function (r) {
       res.send("SUCCESS");

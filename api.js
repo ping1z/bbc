@@ -10,7 +10,6 @@ const InvoiceInfo = mongoose.model('InvoiceInfo');
 const InvoiceHistory = mongoose.model('InvoiceHistory');
 const InvoiceStatus = require('./constant').InvoiceStatus;
 
-
 router.get('/menuInfo', auth.ensureLoggedIn(),
   function (req, res) {
     var components = [];
@@ -112,7 +111,7 @@ router.get('/client/deleteClientInfo/:clientId*', auth.ensureLoggedIn(),
     if (!req.user.roles[USER_ROLES.ROLE_ADMIN]) {
       res.send(500, "Action not allowed.");
       return;
-    } 
+    }
     var p = Client.findByIdAndRemove(req.params.clientId);
     p.then(function (r) {
       res.send(r);
@@ -127,7 +126,7 @@ router.post('/client/updateClientInfo', auth.ensureLoggedIn(),
     if (!req.user.roles[USER_ROLES.ROLE_ADMIN] && !req.user.roles[USER_ROLES.ROLE_MANAGER]) {
       res.send(500, "Action not allowed.");
       return;
-    } 
+    }
     let c = req.body.clientInfo;
     var p = Client.updateInfo(c._id, {
       name: c.name,
@@ -165,7 +164,7 @@ router.post('/client/updateClientJobDetail', auth.ensureLoggedIn(),
     if (!req.user.roles[USER_ROLES.ROLE_ADMIN] && !req.user.roles[USER_ROLES.ROLE_MANAGER]) {
       res.send(500, "Action not allowed.");
       return;
-    } 
+    }
     let _id = req.body._id;
     let jobDetail = req.body.jobDetail;
     let p = Client.updateInfo(_id, {
@@ -184,7 +183,7 @@ router.post('/client/updateClientReminderInfo', auth.ensureLoggedIn(),
     if (!req.user.roles[USER_ROLES.ROLE_ADMIN] && !req.user.roles[USER_ROLES.ROLE_MANAGER]) {
       res.send(500, "Action not allowed.");
       return;
-    } 
+    }
     let _id = req.body._id;
     let reminderInfo = req.body.reminderInfo;
     let p = Client.updateInfo(_id, {
@@ -210,7 +209,7 @@ router.post('/client/updateClientPaymentInfo', auth.ensureLoggedIn(),
     if (!req.user.roles[USER_ROLES.ROLE_ADMIN] && !req.user.roles[USER_ROLES.ROLE_MANAGER]) {
       res.send(500, "Action not allowed.");
       return;
-    } 
+    }
     let _id = req.body._id;
     let clientInfo = req.body.clientInfo;
     let p = Client.updateInfo(clientInfo._id, {
@@ -231,7 +230,7 @@ router.post('/client/saveFullClientInfo', auth.ensureLoggedIn(),
     if (!req.user.roles[USER_ROLES.ROLE_ADMIN] && !req.user.roles[USER_ROLES.ROLE_MANAGER]) {
       res.send(500, "Action not allowed.");
       return;
-    } 
+    }
     var c = req.body.fullClientInfo;
 
     let p = Client.updateInfo(c._id, {
@@ -313,7 +312,7 @@ router.post('/client/deleteClientComment', auth.ensureLoggedIn(),
     if (!req.user.roles[USER_ROLES.ROLE_ADMIN]) {
       res.send(500, "Action not allowed.");
       return;
-    } 
+    }
     var p = ClientComment.findByIdAndRemove(comment._id);
     p.then(function (r) {
       res.send(r);
@@ -426,7 +425,7 @@ router.post('/invoice/sendInvoice/', auth.ensureLoggedIn(),
   }
 );
 
-router.get("/client/previewClientInfo/:clientId*", //auth.ensureLoggedIn(),
+router.get("/client/previewClientInfo/:clientId*", auth.ensureLoggedIn(),
   function (req, res) {
     let clientId = req.params.clientId;
     var p = Client.findOne({ _id: clientId }).exec();

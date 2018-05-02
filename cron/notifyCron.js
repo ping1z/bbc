@@ -19,9 +19,9 @@ mongoose.connection
 
 var job = new cronJob('*/5 * * * * *', function () {
   console.log("start Notify Job...");
-  let p = Client.find({isActive: true}).exec();
+  let p = Client.find({ isActive: true }).exec();
   p.then(function (r) {
-    _.forEach(r, function(c){
+    _.forEach(r, function (c) {
       Notification.UpdateBirthdayNotify(c);
       Notification.UpdateCleanNotify(c);
     });
@@ -31,4 +31,3 @@ var job = new cronJob('*/5 * * * * *', function () {
 });
 
 job.start();
-//module.exports = job;
