@@ -20,7 +20,8 @@ mongoose.connection
 
 // every month 
 //var schedule = '0 0 0 0 * *';
-var schedule = '*/5 * * * * *';
+//var schedule = '*/5 * * * * *';
+var schedule = '0 0 1 * * *';
 var job = new cronJob(schedule, function () {
   logger.info("start [Notify] Job...");
   let p = Client.find({ isActive: true }).exec();
