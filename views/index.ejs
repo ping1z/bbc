@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html ng-app="thatCleanGirl">
+    <%- include('shared/_header'); %>
+    <body ng-controller="TcgController">
+      <div id="top" class="header">
+        <div class="logo">LOGO</div>
+        <ul class="top-menu" ng-controller="TopMenuController as top">
+            <li class=" top-menu-item "
+                ng-repeat="component in getComponents()"
+                ng-click="changeComponents($index)"
+                ng-class="$index==getComponentIndex()?'active':''"
+                    >
+                <div class="top-menu-item-text"> {{component.name}}</div>
+            </li>
+
+        </ul>
+        <ul class="right-corner" ng-controller="TestController as test">
+            <li class=" right-corner-item"><a class=" right-corner-item-link" href="/logout">Log out</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <div class="sider" ng-controller="SiderController as sider">
+            <div class="sider-user-info">
+                <div class="sider-user-photo">
+						<span class="sider-user-photo-circle">
+							<img src="<%= user.avatar %>" class="sider-user-photo-image" alt="avater">
+						</span>
+                </div>
+                <div class="sider-user-info-name">
+                  <%= user.name %>
+                </div>
+                <div class="sider-user-info-role">
+                  <%= user.title %>
+                </div>
+            </div>
+            <div class="sider-divider">
+            </div>
+            <ul class="sider-menu" >
+                <li class="sider-menu-item" ng-repeat="module in getModules()"
+                    ng-class="$index==getModuleIndex()?'active':''"
+                    ng-click="changeModule($index)">
+                    <span class="sider-menu-item-icon">*</span>
+                    {{ module.name }}
+                </li>
+                <li class="sider-button-back" ng-show="modulesStackDepth()>1" ng-click="back()">
+                    Back
+                </li>
+            </ul>
+
+        </div>
+
+        <div class="main">
+            <module-container></module-container>
+        </div>
+	</div>
+     
+    <%- include('shared/_scripts'); %>
+    </body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title><%= subject %></title>
+</head>
+<body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;margin: 0;padding: 0;height: 100% !important;width: 100% !important;">
+<center>
+    <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;margin: 0;padding: 0;border-collapse: collapse !important;height: 100% !important;width: 100% !important;">
+        <tr>
+            <td align="center" valign="top" id="bodyCell" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;margin: 0;padding: 0px;width: 100% !important;">
+                <!-- BEGIN TEMPLATE // -->
+                <table border="0" cellpadding="0" cellspacing="0" id="templateContainer" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;width: 100%;">
+                    <tr>
+                        <td align="center" valign="top" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                            <!-- BEGIN PREHEADER // -->
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templatePreheader" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;background-color: #fff; border-bottom: 1px solid #CCCCCC;border-collapse: collapse !important;">
+                                <tr>
+                                    <td valign="top" class="preheaderContent" style="padding-top: 10px;padding-right: 20px;padding-bottom: 10px;padding-left: 20px;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #808080;font-family: Helvetica;font-size: 10px;line-height: 125%;text-align: left;">
+                                        [Invoice] #<%= invoice.invoiceYM %>  - That Clean Girl Service
+                                    </td>
+                                    
+                                </tr>
+                            </table>
+                            <!-- // END PREHEADER -->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" valign="top" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                            <!-- BEGIN BODY // -->
+                             <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateBody" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt; #fff;max-width: 800px;overflow: hidden;">
+                                <tr>
+                                    <td valign="top" class="bodyRowContent" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #505050;font-family: Helvetica;font-size: 14px;line-height: 150%;padding-top: 0px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px;">
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;border-collapse: collapse !important;">
+                                            <tr>
+                                                <td valign="top" class="bodyRowContent" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #505050;font-family: Helvetica;font-size: 14px;line-height: 150%;padding-top: 0px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px;">
+                                                    <p style="text-align: right;font-weight: bold;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;">  Invoice Date : <%= toAusDateStr(invoice.invoiceDate) %></p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" class="bodyRowContent" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #505050;font-family: Helvetica;font-size: 14px;line-height: 150%;padding-top: 0px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px;">
+                                                    <div style="width:100px;display: inline-block;float:left">  Customer: </div> <div style="float:left;width:200px;overflow: hidden; word-wrap: break-word;;display: inline-block;font-weight: bold;"><%= invoice.invoiceTitle %></div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" class="bodyRowContent" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #505050;font-family: Helvetica;font-size: 14px;line-height: 150%;padding-top: 0px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px;">
+                                                    <div style="width:100px;display: inline-block;float:left">  Phone: </div> <div style="float:left;width:200px;overflow: hidden; word-wrap: break-word;;display: inline-block;font-weight: bold;"><%= invoice.tel %></div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" class="bodyRowContent" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #505050;font-family: Helvetica;font-size: 14px;line-height: 150%;padding-top: 0px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px;">
+                                                    <div style="width:100px;display: inline-block;float:left">  Address: </div> <div style="float:left;width:200px;overflow: hidden; word-wrap: break-word;;display: inline-block;font-weight: bold;"><%= invoice.address %></div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td valign="top" class="bodyRowContent" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #505050;font-family: Helvetica;font-size: 14px;line-height: 150%;padding-top: 0px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px;">
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;border-collapse: collapse !important;">
+                                            <tr>
+                                                <th valign="top" class="bodyRowContent" style="color: #505050;font-family: Helvetica;font-size: 14px;line-height: 150%;padding-top: 0px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px;">
+                                                    Service Date
+                                                </th>
+                                                <th valign="top" class="bodyRowContent" style="color: #505050;font-family: Helvetica;font-size: 14px;line-height: 150%;padding-top: 0px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px;">
+                                                    Service/Product Description
+                                                </th>
+                                                <th valign="top" class="bodyRowContent" style="color: #505050;font-family: Helvetica;font-size: 14px;line-height: 150%;padding-top: 0px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px;">
+                                                    Price
+                                                </th>
+                                            </tr>
+											                      <% invoice.items.forEach(function(item){ %>
+											                      <tr>
+                                                <td align="center" valign="top" class="bodyRowContent" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #505050;font-family: Helvetica;font-size: 14px;line-height: 150%;padding-top: 0px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px;"> <%= toAusDateStr(item.serviceDate) %></td>
+                                                <td align="center" valign="top" class="bodyRowContent" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #505050;font-family: Helvetica;font-size: 14px;line-height: 150%;padding-top: 0px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px;"><%= item.description %></td>
+                                                <td align="center" valign="top" class="bodyRowContent" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #505050;font-family: Helvetica;font-size: 14px;line-height: 150%;padding-top: 0px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px;">$<%= formatMoney(item.price) %></td>
+                                            </tr>			
+										                        <% })%>
+                                            <tr>
+                                                <td align="center" valign="top" class="bodyRowContent" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #505050;font-family: Helvetica;font-size: 14px;line-height: 150%;padding-top: 0px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px;"></td>
+                                                <td align="center" valign="top" class="bodyRowContent" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #505050;font-family: Helvetica;font-size: 14px;line-height: 150%;padding-top: 0px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px; text-align:right;font-weight: bold;">Total:</td>
+                                                <td align="center" valign="top" class="bodyRowContent" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #505050;font-family: Helvetica;font-size: 14px;line-height: 150%;padding-top: 0px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px;font-weight: bold;">$<%= formatMoney(invoice.total) %></td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center" valign="top" class="bodyRowContent" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #505050;font-family: Helvetica;font-size: 14px;line-height: 150%;padding-top: 0px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px;"></td>
+                                                <td align="center" valign="top" class="bodyRowContent" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #505050;font-family: Helvetica;font-size: 14px;line-height: 150%;padding-top: 0px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px; text-align:right;font-weight: bold;">GST:</td>
+                                                <td align="center" valign="top" class="bodyRowContent" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #505050;font-family: Helvetica;font-size: 14px;line-height: 150%;padding-top: 0px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px;font-weight: bold;">$<%= formatMoney(invoice.gst) %></td>
+                                            </tr>	
+                                            <tr>
+                                                <td align="center" valign="top" class="bodyRowContent" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #505050;font-family: Helvetica;font-size: 14px;line-height: 150%;padding-top: 0px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px;"></td>
+                                                <td align="center" valign="top" class="bodyRowContent" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #505050;font-family: Helvetica;font-size: 14px;line-height: 150%;padding-top: 0px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px; text-align:right;font-weight: bold;">Total inc GST:</td>
+                                                <td align="center" valign="top" class="bodyRowContent" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #505050;font-family: Helvetica;font-size: 14px;line-height: 150%;padding-top: 0px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px;font-weight: bold;">$<%= formatMoney(invoice.gst + invoice.total) %></td>
+                                            </tr>	
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            <!-- // END BODY -->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" valign="top" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                            <!-- BEGIN FOOTER // -->
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateFooter" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;background-color: #fff;border-top: 1px solid #FFFFFF;border-collapse: collapse !important;">
+                               
+                                <tr>
+                                    <td valign="top" class="footerContent" style="padding-top: 20px;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #808080;font-family: Helvetica;font-size: 10px;line-height: 150%;padding-right: 20px;padding-bottom: 20px;padding-left: 20px;text-align: left;" mc:edit="footer_content01">
+                                        <a href="www.tcg.com" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;color: #606060;font-weight: normal;text-decoration: underline;">Website:www.tcg.com</a>
+                                        <br>
+                                        <strong>Customer Hotline: 0432 236 968</strong>
+                                        <br>
+                                        <strong>Our mailing address is: <a href="mailTo:tcg@email.com" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;color: #606060;font-weight: normal;text-decoration: underline;">tcg@email.com</a></strong>
+                                        <br>
+                                        <br>
+                                        Copyright &copy; 2015 That Clean Girl Service, All rights reserved.
+                                    </td>
+                                </tr>
+                            </table>
+                            <!-- // END FOOTER -->
+                        </td>
+                    </tr>
+                </table>
+                <!-- // END TEMPLATE -->
+            </td>
+        </tr>
+    </table>
+</center>
+</body>
+</html>

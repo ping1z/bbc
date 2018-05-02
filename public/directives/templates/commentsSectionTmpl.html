@@ -1,0 +1,51 @@
+<div class="module-section">
+	<div class="module-section-header">
+		<span class="module-section-header-square">
+		</span>
+		<span class="module-section-header-title">
+			Comments
+		</span>
+	</div>
+	<div class="module-section-body">
+		<div class="row comment-row">
+			<div class="col-xs-12 comment-input-group">
+				<div class="col-xs-2 col-xs-offset-1 comment-input-user">
+					<div class="comment-input-user-name">{{userProfile.name}}</div>
+					<div class="comment-input-user-role">{{userProfile.title}}</div>
+				</div>
+				<div class="col-xs-8 comment-input-textarea-container">
+					<textarea name="newComment" class="comment-input-textarea" rows="2" ng-model="newComment" ></textarea>
+						<div class="comment-input-actions">
+							<div class="comment-input-action-button" ng-click="postComment()" >post</div>
+						</div>
+				</div>
+			</div>
+		</div>
+		<div class="row form-divider">
+		</div>
+		<div class="row comment-row" ng-repeat="comment in comments  "><!-- |orderBy:'-createDateTime' -->
+			<div class="col-xs-12 comment-group">
+				<div class="row">
+					<div class="col-xs-11 col-xs-offset-1">
+						<span class="comment-user">{{comment.authorName}}</span>
+						<span class="comment-role">{{comment.authorTitle}}</span>
+						<span class="comment-datetime">{{comment.createdTime}}</span>	
+					</div>
+				</div>
+				<div class="row" >
+					<div class="col-xs-10 col-xs-offset-1">
+						<div class="comment-content">
+							{{comment.content}}
+						</div>
+					</div>
+				</div>
+				<div class="row" ng-show="comment.authorId == userProfile._id">
+					<div class="col-xs-8 col-xs-offset-1">
+						<!-- <span class="comment-action">edit</span> -->
+							<span ng-click="deleteComment($index)" class="comment-action">delete</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

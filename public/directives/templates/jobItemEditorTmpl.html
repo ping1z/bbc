@@ -1,0 +1,34 @@
+<div class="modal-header">
+    <h3 class="modal-title">Job Item</h3>
+</div>
+<div class="modal-body">
+
+    <div class="row form-row">
+        <div class="col-xs-12 form-group">
+            <label for="itemName" class="col-xs-3 form-control-label">Item Name</label>
+            <div class="col-xs-6">
+                <input  type="text"  ng-model="item.name" class="form-control" required>
+            </div>
+        </div>
+    </div>
+    <div class="row form-row">
+        <div class="col-xs-12 form-group">
+            <label for="amount" class="col-xs-3 form-control-label">Amount</label>
+            <div class="col-xs-2">
+                <input  type="text"  ng-model="item.amount" class="form-control" required>
+            </div>
+        </div>
+    </div>
+    <div class="row form-row">
+        <div class="col-xs-12 form-group">
+            <label for="amount" class="col-xs-3 form-control-label">Request</label>
+            <div class="col-xs-6">
+                <textarea  type="text" ng-model="item.request" class="form-control" rows=3></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>

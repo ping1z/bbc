@@ -1,0 +1,160 @@
+<div class="client-detail module-container">
+    <div class="module-section">
+        <div class="module-section-header">
+		    <span class="module-section-header-square">
+		    </span>
+		    <span class="module-section-header-title">
+                Service Info
+		    </span>
+        </div>
+        <div class="module-section-body">
+            <div class="row form-row">
+                <div class="col-xs-6 form-group">
+                    <label for="clientName" class="col-xs-4 form-control-label">Client Name</label>
+                    <div class="col-xs-8">
+                        <div ng-bind="serviceInfo.clientName"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-row">
+                <div class="col-xs-6 form-group">
+                    <label for="mobile" class="col-xs-4 form-control-label">Mobile</label>
+                    <div class="col-xs-8">
+                        <div ng-bind="serviceInfo.tel"></div>
+                    </div>
+                </div>
+                <div class="col-xs-6 form-group">
+                    <label for="address" class="col-xs-4 form-control-label">Address</label>
+                    <div class="col-xs-6">
+                        <div ng-bind="serviceInfo.address"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-row">
+                <div class="col-xs-6 form-group">
+                    <label for="email" class="col-xs-4 form-control-label">Email</label>
+                    <div class="col-xs-8">
+                        <div  ng-bind="serviceInfo.email">{{serviceInfo.email}}</div>
+                    </div>
+                </div>
+                <div class="col-xs-6 form-group">
+                    <label for="suburb" class="col-xs-4 form-control-label">Suburb</label>
+                    <div class="col-xs-6">
+                        <div  ng-bind="serviceInfo.suburb"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-divider">
+            </div>
+            <div class="row form-row">
+                <div class="col-xs-6 form-group">
+                    <label for="payment" class="col-xs-4 form-control-label">Payment</label>
+                    <div  class="col-xs-8">
+                        <div ng-if="!editMode" name="payment" ng-bind="serviceInfo.paymentType"></div>
+                        <select ng-if="editMode" ng-model="serviceInfo.paymentType">
+                            <option value="cash">Cash</option>
+                            <option value="cheque">Cheque</option>
+                            <option value="debt">Direct Debt</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-6 form-group">
+                    <label for="price" class="col-xs-4 form-control-label">Price</label>
+                    <div class="col-xs-6">
+                        <input ng-if="editMode" type="text" ng-model="serviceInfo.price" class="form-control"  required>
+                        <div ng-if="!editMode" ng-bind="serviceInfo.price | currency:'AUD$'"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-row">
+                <div class="col-xs-12 form-group">
+                    <label class="col-xs-2 form-control-label">Invoice</label>
+                    <div ng-if="!editMode" class="col-xs-10">
+                        <div ng-show="serviceInfo.invoiceNeeded==false">Not Needed</div>
+                        <div ng-show="serviceInfo.invoiceNeeded==true" class="col-xs-12 form-control-pair-item">
+                            <label for="invoiceTitle" class="col-xs-2 form-control-label">Invoice Title</label>
+                            <div class="col-xs-1">
+                                <strong>-</strong>
+                            </div>
+                            <div class="col-xs-8">
+                                <div name="petsInfo-keeping" ng-bind="serviceInfo.invoiceTitle" ></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-if="editMode" class="col-xs-4 btn-group">
+                        <label class="btn btn-default btn-xs" ng-class="{'btn-warning':serviceInfo.invoiceNeeded}" ng-model="serviceInfo.invoiceNeeded" btn-radio=true uncheckable>Yes</label>
+                        <label class="btn btn-default btn-xs" ng-model="serviceInfo.invoiceNeeded" btn-radio=false uncheckable>No</label>
+                    </div>
+
+                    <div ng-if="editMode&&serviceInfo.invoiceNeeded==true" class="col-xs-6 form-group form-group-sub-divider">
+                        <div class="row" >
+                            <div class="col-xs-10 form-group-sub">
+                                <label for="invoiceTitle" class="col-xs-4 form-control-label">Invoice Title</label>
+                                <div class="col-xs-8">
+                                    <input type="text" name="invoiceTitle"  ng-model="serviceInfo.invoiceTitle" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-divider">
+            </div>
+            <div class="row form-row">
+                <div class="col-xs-6 form-group">
+                    <label for="serviceDate" class="col-xs-4 form-control-label">Service Date</label>
+                    <div class="col-xs-8">
+                        <plugin-date-picker ng-if="editMode" placeholder="EEEE, dd/MM/yyyy" ng-model ="serviceInfo.serviceDate" required></plugin-date-picker>
+                        <div ng-if="!editMode" ng-bind="serviceInfo.serviceDate | date:'EEEE, dd/MM/yyyy' "></div>
+                    </div>
+                </div>
+                <div class="col-xs-6 form-group">
+                    <label for="teamId" class="col-xs-4 form-control-label">Team</label>
+                    <div class="col-xs-6">
+                        <select  ng-if="editMode" name="teamId" ng-model="serviceInfo.teamId" class="form-control" required>
+                            <option value="teamA">Team A</option>
+                            <option value="teamB">Team B</option>
+                            <option value="teamC">Team C</option>
+                        </select>
+                        <div ng-if="!editMode" ng-bind="serviceInfo.teamId"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-row">
+                <div class="col-xs-6 form-group">
+                    <label for="serviceStartTime" class="col-xs-4 form-control-label">Start Time</label>
+                    <div class="col-xs-6">
+                        <plugin-time-picker ng-if="editMode"  ng-model ="serviceInfo.serviceStartTime" data-show-meridian=false></plugin-time-picker>
+                        <div ng-if="!editMode" ng-bind="serviceInfo.serviceStartTime"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-row">
+                <div class="col-xs-12 form-group">
+                    <label for="notes" class="col-xs-2 form-control-label">Notes</label>
+                    <div class="col-xs-9">
+                        <textarea ng-if="editMode" type="text" ng-model="serviceInfo.notes" class="form-control" rows=3>{{serviceInfo.notes}}</textarea>
+                        <div ng-if="!editMode" ng-model="serviceInfo.notes" d-multiline ></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <job-detail-section-tmpl ng-model="serviceInfo" data-save-section=false data-edit-mode="editMode"></job-detail-section-tmpl>
+    
+	
+	<div>
+	</div>
+    <div ng-if="editMode" class="row bottom-actions-section">
+        <span class="bottom-action-button-large" ng-click="Save()">Save</span>
+    </div>
+	<div ng-if="!editMode" class="row bottom-actions-section">
+        
+    </div>
+	<div ng-if="!editMode" class="row bottom-actions-section">
+		<span class="bottom-action-button" ng-click="Edit()">Edit</span>
+        <span class="bottom-action-button" ng-click="Confirm()">Confirm</span>
+    </div>
+
+    
+</div>

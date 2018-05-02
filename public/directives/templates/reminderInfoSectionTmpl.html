@@ -1,0 +1,102 @@
+<!-- Job Details Section -->
+<!-- Job Details Section -->
+<!-- Job Details Section -->
+<div class="module-section">
+	<div class="module-section-header">
+		<span class="module-section-header-square">
+		</span>
+		<span class="module-section-header-title">
+			Spring Clean Reminder
+		</span>
+		<div ng-show="saveSection" class="module-section-button-group">
+			<span ng-show="!editMode && UserService.isAdmin()" class="module-section-button glyphicon glyphicon-edit" ng-click="editMode=true"></span>
+			<span ng-show="editMode" class="module-section-button glyphicon glyphicon-ok" ng-click="submit()"></span>
+		</div>
+	</div>
+	<div class="module-section-body">
+        <div class="row form-row">
+            <div class="col-xs-6 form-group">
+                <label for="oven" class="col-xs-4 form-control-label">Oven</label>
+                <div class="col-xs-7">
+                    <plugin-date-picker ng-if="editMode" placeholder="dd/MM/yyyy" ng-model ="clientInfo.reminderInfo.ovenDate"></plugin-date-picker>
+                    <div ng-if="!editMode" ng-bind="clientInfo.reminderInfo.ovenDate | date:'dd/MM/yyyy' "></div>
+                </div>
+            </div>
+            <div class="col-xs-6 form-group">
+                <label for="blinds" class="col-xs-4 form-control-label">Blinds/Shutters</label>
+                <div class="col-xs-7">
+                    <plugin-date-picker ng-if="editMode" placeholder="dd/MM/yyyy" ng-model ="clientInfo.reminderInfo.blindsDate"></plugin-date-picker>
+                    <div ng-if="!editMode" ng-bind="clientInfo.reminderInfo.blindsDate | date:'dd/MM/yyyy' "></div>
+                </div>
+            </div>
+        </div>
+        <div class="row form-row">
+            <div class="col-xs-6 form-group">
+                <label for="fridge" class="col-xs-4 form-control-label">Fridge</label>
+                <div class="col-xs-7">
+                    <plugin-date-picker ng-if="editMode" placeholder="dd/MM/yyyy" ng-model ="clientInfo.reminderInfo.fridgeDate"></plugin-date-picker>
+                    <div ng-if="!editMode" ng-bind="clientInfo.reminderInfo.fridgeDate | date:'dd/MM/yyyy' "></div>
+                </div>
+            </div>
+            <div class="col-xs-6 form-group">
+                <label for="wardrobes" class="col-xs-4 form-control-label">Wardrobes</label>
+                <div class="col-xs-7">
+                    <plugin-date-picker ng-if="editMode" placeholder="dd/MM/yyyy" ng-model ="clientInfo.reminderInfo.wardrobesDate"></plugin-date-picker>
+                    <div ng-if="!editMode" ng-bind="clientInfo.reminderInfo.wardrobesDate | date:'dd/MM/yyyy' "></div>
+                </div>
+            </div>
+        </div>
+        <div class="row form-row">
+            <div class="col-xs-6 form-group">
+                <label for="rangeHood" class="col-xs-4 form-control-label">Range Hood</label>
+                <div class="col-xs-7">
+                    <plugin-date-picker ng-if="editMode" placeholder="dd/MM/yyyy" ng-model ="clientInfo.reminderInfo.rangeHoodDate"></plugin-date-picker>
+                    <div ng-if="!editMode" ng-bind="clientInfo.reminderInfo.rangeHoodDate | date:'dd/MM/yyyy' "></div>
+                </div>
+            </div>
+            <div class="col-xs-6 form-group">
+                <label for="windows" class="col-xs-4 form-control-label">Windows</label>
+                <div class="col-xs-7">
+                    <plugin-date-picker ng-if="editMode" placeholder="dd/MM/yyyy" ng-model ="clientInfo.reminderInfo.windowsDate"></plugin-date-picker>
+                    <div ng-if="!editMode" ng-bind="clientInfo.reminderInfo.windowsDate | date:'dd/MM/yyyy' "></div>
+                </div>
+            </div>
+        </div>
+        <div class="row form-row">
+            <div class="col-xs-6 form-group">
+                <label for="pantry" class="col-xs-4 form-control-label">Pantry</label>
+                <div class="col-xs-7">
+                    <plugin-date-picker ng-if="editMode" placeholder="dd/MM/yyyy" ng-model ="clientInfo.reminderInfo.pantryDate"></plugin-date-picker>
+                    <div ng-if="!editMode" ng-bind="clientInfo.reminderInfo.pantryDate | date:'dd/MM/yyyy' "></div>
+                </div>
+            </div>
+            <div class="col-xs-6 form-group">
+                <label for="carpet" class="col-xs-4 form-control-label">Carpets clean</label>
+                <div class="col-xs-7">
+                    <plugin-date-picker ng-if="editMode" placeholder="dd/MM/yyyy" ng-model ="clientInfo.reminderInfo.carpetDate"></plugin-date-picker>
+                    <div ng-if="!editMode" ng-bind="clientInfo.reminderInfo.carpetDate | date:'dd/MM/yyyy' "></div>
+                </div>
+            </div>
+        </div>
+        <div class="row form-row">
+            <div class="col-xs-6 form-group">
+                <label for="kitchen" class="col-xs-4 form-control-label">Inside Kitchen Cupboards</label>
+                <div class="col-xs-7">
+                    <plugin-date-picker ng-if="editMode" placeholder="dd/MM/yyyy" ng-model ="clientInfo.reminderInfo.kitchenDate"></plugin-date-picker>
+                    <div ng-if="!editMode" ng-bind="clientInfo.reminderInfo.kitchenDate | date:'dd/MM/yyyy' "></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row form-row">
+            <div class="col-xs-12 form-group">
+                <label for="Others" class="col-xs-2 form-control-label">Others</label>
+                <div class="col-xs-9">
+                    <textarea ng-if="editMode" type="text" ng-model="clientInfo.reminderInfo.others" class="form-control" rows=2>{{clientInfo.reminderInfo.others}}</textarea>
+                    <div ng-if="!editMode" ng-model="clientInfo.reminderInfo.others" d-multiline ></div>
+                </div>
+            </div>
+        </div>
+
+	</div>
+</div>

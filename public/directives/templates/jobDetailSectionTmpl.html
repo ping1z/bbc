@@ -1,0 +1,228 @@
+<!-- Job Details Section -->
+<!-- Job Details Section -->
+<!-- Job Details Section -->
+<div class="module-section">
+	<div class="module-section-header">
+		<span class="module-section-header-square">
+		</span>
+		<span class="module-section-header-title">
+			Job Details
+		</span>
+		<div ng-show="saveSection" class="module-section-button-group">
+			<span ng-show="!editMode && UserService.isAdmin()" class="module-section-button glyphicon glyphicon-edit" ng-click="editMode=true"></span>
+			<span ng-show="editMode" class="module-section-button glyphicon glyphicon-ok" ng-click="submit()"></span>
+		</div>
+	</div>
+	<div class="module-section-body">
+		<div class="row form-row">
+			<div class="col-xs-12 form-group">
+				<label for="frequency" class="col-xs-2 form-control-label">Frequency</label>
+				<div class="col-xs-4">
+					<div ng-if="!editMode" name="frequency">{{clientInfo.jobDetail.frequency}}</div>
+					<select ng-if="editMode" ng-model="clientInfo.jobDetail.frequency" class="form-control">
+						<option value="weekly">weekly</option>
+						<option value="fortnightly">fortnightly</option>"fortnightly"
+						<option value="monthly">monthly</option>
+						<option value="whenNeed">when need</option>
+					</select>
+				</div>					
+			</div>
+		</div>
+		<div class="row form-row">
+			<div class="col-xs-12 form-group">
+				<label class="col-xs-2 form-control-label">Key</label>
+				<div ng-if="!editMode" class="col-xs-10">
+					<div ng-show="clientInfo.jobDetail.key.has==false">No key</div>
+					<div ng-show="clientInfo.jobDetail.key.has==true">
+					<div class="col-xs-12 form-control-pair-item">
+					<label for="keyInfo-notes" class="col-xs-2 form-control-label">notes</label>
+						<div class="col-xs-1">
+							<strong>-</strong>
+						</div>
+						<div class="col-xs-8">
+							<div name="keyInfo-notes">{{clientInfo.jobDetail.key.notes}}</div>
+						</div>
+					</div>
+                    </div>
+				</div>
+
+                <div ng-if="editMode" class="col-xs-4 btn-group">
+                    <label class="btn btn-default btn-xs" ng-class="{'btn-warning':clientInfo.jobDetail.key.has}" ng-model="clientInfo.jobDetail.key.has" btn-radio=true uncheckable>Yes</label>
+                    <label class="btn btn-default btn-xs" ng-class="{'btn-warning':!clientInfo.jobDetail.key.has}" ng-model="clientInfo.jobDetail.key.has" btn-radio=false uncheckable>No</label>
+                </div>
+
+				<div ng-if="editMode&&clientInfo.jobDetail.key.has==true" class="col-xs-6 form-group form-group-sub-divider">
+					<div class="row" >
+						<div class="col-xs-10 form-group-sub">
+							<label for="keyNotes" class="col-xs-4 form-control-label">Notes</label>
+							<div class="col-xs-8">
+								<select name="keyNotes" ng-model="clientInfo.jobDetail.key.notes" class="form-control">
+									<option value="keptByUs">Kept by us</option>
+									<option value="original">Put back original place</option>
+									<option value="kitchen">Put back kitchen bench</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+        <div class="row form-row">
+            <div class="col-xs-12 form-group">
+                <label class="col-xs-2 form-control-label">Alarm</label>
+                <div ng-if="!editMode" class="col-xs-10">
+                    <div ng-show="clientInfo.jobDetail.alarm.has==false">No Alarm</div>
+                    <div ng-show="clientInfo.jobDetail.alarm.has==true">
+                        <div class="col-xs-12 form-control-pair-item">
+                            <label for="alarmInfo-alarmIn" class="col-xs-2 form-control-label">Alarm In</label>
+                            <div class="col-xs-1">
+                                <strong>-</strong>
+                            </div>
+                            <div class="col-xs-8">
+                                <div name="keyInfo-alarmIn">{{clientInfo.jobDetail.alarm.alarmIn}}</div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 form-control-pair-item">
+                            <label for="alarmInfo-alarmOut" class="col-xs-2 form-control-label">Alarm Out</label>
+                            <div class="col-xs-1">
+                                <strong>-</strong>
+                            </div>
+                            <div class="col-xs-8">
+                                <div name="keyInfo-alarmOut">{{clientInfo.jobDetail.alarm.alarmOut}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div ng-if="editMode" class="col-xs-4 btn-group">
+                    <label class="btn btn-default btn-xs" ng-class="{'btn-warning':clientInfo.jobDetail.alarm.has}" ng-model="clientInfo.jobDetail.alarm.has" btn-radio=true uncheckable>Yes</label>
+                    <label class="btn btn-default btn-xs" ng-class="{'btn-warning':!clientInfo.jobDetail.alarm.has}" ng-model="clientInfo.jobDetail.alarm.has" btn-radio=false uncheckable>No</label>
+                </div>
+
+                <div ng-if="editMode&&clientInfo.jobDetail.alarm.has==true" class="col-xs-6 form-group form-group-sub-divider">
+                    <div class="row" >
+                        <div class="col-xs-10 form-group-sub">
+                            <label for="alarmIn" class="col-xs-4 form-control-label">Alarm In</label>
+                            <div class="col-xs-8">
+                                <!--<plugin-time-picker ng-model ="jobDetail.key.alarmIn"></plugin-time-picker>-->
+                                <input type="text" ng-model="clientInfo.jobDetail.alarm.alarmIn" class="form-control" value="{{clientInfo.jobDetail.alarm.alarmIn}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" >
+                        <div class="col-xs-10 form-group-sub">
+                            <label for="alarmOut" class="col-xs-4 form-control-label">Alarm Out</label>
+                            <div class="col-xs-8">
+                                <!--<plugin-time-picker ng-model ="jobDetail.key.alarmOut"></plugin-time-picker>-->
+                                <input type="text" ng-model="clientInfo.jobDetail.alarm.alarmOut" class="form-control" value="{{clientInfo.jobDetail.alarm.alarmOut}}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+		<div class="row form-row">
+			<div class="col-xs-12 form-group">
+				<label class="col-xs-2 form-control-label">Pets</label>
+				<div ng-if="!editMode" class="col-xs-10">
+					<div ng-show="clientInfo.jobDetail.pet.has==false">No pet</div>
+					<div ng-show="clientInfo.jobDetail.pet.has==true" class="col-xs-12 form-control-pair-item">
+						<label for="petsInfo-notes" class="col-xs-2 form-control-label">Notes</label>
+						<div class="col-xs-1">
+							<strong>-</strong>
+						</div>
+						<div class="col-xs-8">
+							<div name="petsInfo-notes">{{clientInfo.jobDetail.pet.notes}}</div>
+						</div>
+					</div>
+				</div>
+                <div ng-if="editMode" class="col-xs-4 btn-group">
+                    <label class="btn btn-default btn-xs" ng-class="{'btn-warning':clientInfo.jobDetail.pet.has}" ng-model="clientInfo.jobDetail.pet.has" btn-radio=true uncheckable>Yes</label>
+                    <label class="btn btn-default btn-xs"  ng-class="{'btn-warning':!clientInfo.jobDetail.pet.has}" ng-model="clientInfo.jobDetail.pet.has" btn-radio=false uncheckable>No</label>
+                </div>
+				<div ng-if="editMode&&clientInfo.jobDetail.pet.has==true" class="col-xs-6 form-group form-group-sub-divider">
+					<div class="row" >
+						<div class="col-xs-10 form-group-sub">
+							<label for="keyNotes" class="col-xs-4 form-control-label">Notes</label>
+							<div class="col-xs-8">
+								<select name="petsNotes" ng-model="clientInfo.jobDetail.pet.notes" class="form-control">
+									<option value="doesNotMatter">Doesn't matter</option>
+									<option value="keptInDoor">Kept indoor</option>
+									<option value="keptOutDoor">Kept outdoor</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>								
+		<div class="row form-row">
+			<div class="col-xs-12 form-group">
+				<label for="important" class="col-xs-2 form-control-label">Important</label>
+				<div class="col-xs-9">
+					<textarea ng-if="editMode" type="text" ng-model="clientInfo.jobDetail.important" class="form-control" rows=3>{{clientInfo.jobDetails.important}}</textarea>
+					<div ng-if="!editMode" ng-model="clientInfo.jobDetail.important" d-multiline ></div>
+				</div>
+			</div>								
+		</div>
+        <div class="row form-row">
+            <div class="col-xs-12 form-group">
+                <label for="rotation" class="col-xs-2 form-control-label">Rotation</label>
+                <div ng-if="editMode" class="col-xs-10">
+                    <d-form-control-rotation-group bindModel="clientInfo.jobDetail.rotations"></d-form-control-rotation-group>
+                    <div class="col-xs-12 form-control-item-list" ng-repeat="item in clientInfo.jobDetail.rotations">
+                        <label for="rotation_{{item.key}}" class="col-xs-2 form-control-label">{{item.key}}</label>
+                        <div class="col-xs-8">
+                            <input id="rotation_{{item.key}}" ng-model="item.value" class="form-control" type="text" ng-value="item.value">
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="!editMode"  class="col-xs-10">
+                    <div class="col-xs-12 form-control-item-list" ng-repeat="item in clientInfo.jobDetail.rotations" ng-show="item.value!=''">
+                        <label for="rotation_{{item.key}}" class="col-xs-2 form-control-label">{{item.key}}</label>
+                        <div class="col-xs-8">
+                            <div  name="rotation_{{item.key}}" type="text">{{item.value}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<div class="row form-divider">
+		</div>
+		<!-- Items sub-section -->
+		<!-- Items sub-section -->
+		<!-- Items sub-section -->
+		<div class="row module-subSection">
+			<div class="module-subSection-header">
+				<span class="module-subSection-header-title">
+                    Special Request
+				</span>
+			</div>
+			<div class="module-subSection-body">									
+				<ul class="col-xs-12 job-item-list">
+					<li class=" row job-item" ng-repeat="item in clientInfo.jobDetail.items" ng-click="jobDetailSection.curItemIndex=$index" ng-class="jobDetailSection.curItemIndex==$index?'active':''">
+						<div class=" job-item-head">
+							<span class=" job-item-head-name">{{item.name}}</span>
+							<span class=" job-item-head-times">*</span>
+							<span class="job-item-head-num">{{item.amount}}</span>
+							<div ng-if="editMode" class="job-item-actions">
+								<span class="job-item-action-button glyphicon glyphicon-edit" ng-click="openEditor($index)" ></span><span ng-click="deleteItem($index)" class="job-item-action-button glyphicon glyphicon-trash"></span>
+							</div>
+						</div>		
+						<div class=" job-item-detail expanded">
+							{{item.request}}
+						</div>						
+					</li>
+					<li ng-if="editMode" class=" row job-add-item-buton" ng-click="openEditor(-1)">
+						Add New Item								
+					</li>					
+				</ul>
+			</div>
+		</div>
+	</div>
+    <div ng-show="clientInfo.isActive" class="row bottom-actions-section">
+        <span class="bottom-action-button-large" ng-click="createService()">One-off Service</span>
+    </div>
+</div>

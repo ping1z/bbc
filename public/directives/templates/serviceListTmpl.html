@@ -1,0 +1,50 @@
+<div class="module-section">
+    <div class="module-section-header">
+		<span class="module-section-header-square">
+		</span>
+		<span class="module-section-header-title">
+			Services List
+		</span>
+    </div>
+    <div class="module-section-body">
+        <div class="row service-list-row">
+            <div class="col-xs-12 form-group">
+            <div class="control-search">
+                <input class="control-search-input" type="text">
+                <div class="control-search-button">Search</div>
+            </div>
+            </div>
+        </div>
+        <div class="row service-list-row">
+            <div class="col-xs-6 form-group">
+            <div class="btn-group">
+                <label class="btn btn-default btn-sm" ng-class="{'btn-warning':filters.pending}" ng-model="filters.pending" btn-checkbox>Pending</label>
+                <label class="btn btn-default btn-sm" ng-class="{'btn-warning':filters.processing}" ng-model="filters.processing" btn-checkbox>Processing</label>
+                <label class="btn btn-default btn-sm" ng-class="{'btn-warning':filters.completed}" ng-model="filters.completed" btn-checkbox>Completed</label>
+                <label class="btn btn-default btn-sm" ng-class="{'btn-warning':filters.reviewed}" ng-model="filters.reviewed" btn-checkbox>Reviewed</label>
+                <label class="btn btn-default btn-sm" ng-class="{'btn-warning':filters.cancelled}" ng-model="filters.cancelled" btn-checkbox>Cancelled</label>
+            </div>
+             </div>
+        </div>
+    </div>
+    <table class="service-list-table light" style="margin-top: -10px;">
+        <thead>
+        <tr>
+            <th>Client Name</th>
+            <th>Status</th>
+            <th>Service Date</th>
+            <th>Address</th>
+            <th>Team</th>
+        </tr>
+        <thead>
+        <tbody>
+        <tr ng-repeat="serviceInfo in serviceInfoList" ng-click="EditService($index)">
+            <td>{{serviceInfo.clientName}}</td>
+            <td>{{parseStatus(serviceInfo.status)}}</td>
+            <td>{{serviceInfo.serviceDate | date:'dd/MM/yyyy'}}</td>
+            <td>{{serviceInfo.address}}</td>
+            <td>{{serviceInfo.teamId}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

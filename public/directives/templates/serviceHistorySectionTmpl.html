@@ -1,0 +1,32 @@
+<!-- Service history section -->
+<!-- Service history section -->
+<!-- Service history section -->
+<div class="module-section">
+	<div class="module-section-header">
+		<span class="module-section-header-square">
+		</span>
+		<span class="module-section-header-title">
+			Service History
+		</span>
+	</div>
+	<table class="service-list-table table-hover">
+		<thead>
+			<tr>
+				<th>Service Date</th>
+				<th>Service Time</th>
+				<th>Price</th>
+                <th>Team</th>
+                <th>Notes</th>
+			</tr>
+		<thead>
+		<tbody>
+			<tr ng-repeat="serviceInfo in serviceHistory">
+				<td>{{serviceInfo.serviceDate | date:'EEEE, dd/MM/yyyy' }}</td>
+				<td>{{serviceInfo.serviceStartTime}}</td>
+				<td>{{serviceInfo.price | currency:'AUD$' }}</td>
+                <td>{{serviceInfo.teamId}}</td>
+				<td>{{serviceInfo.notes}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

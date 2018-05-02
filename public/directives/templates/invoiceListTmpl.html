@@ -1,0 +1,89 @@
+<div class="invoice-list module-container">
+	<div class="module-section">
+		<div class="module-section-header">
+			<span class="module-section-header-square">
+			</span>
+			<span class="module-section-header-title">
+				Invoice
+			</span>
+		</div>
+		<div class="module-section-body">
+			<div class="row" style="padding:0 10px">
+				<div style="float:left;font-size:20px;line-height:30px;">
+					Service History -
+					<span style="font-size:30px;">{{curDate| date:'MMM, yyyy'}}</span>
+				</div>
+				<div style="float:right" class="btn-group">
+					<label class="btn btn-default btn-sm" ng-click="previous()">
+						<span style="font-size:15px; width:40px;" class="glyphicon glyphicon-chevron-left"></span>
+					</label>
+					<label class="btn btn-default btn-sm" ng-class="{'disabled': dateOffset>=0}" ng-click="next()">
+						<span style="font-size:15px; width:40px;" class="glyphicon glyphicon-chevron-right"></span>
+					</label>
+				</div>
+			</div>
+		</div>
+		<table class="invoice-list-table">
+			<thead>
+				<tr>
+					<th>Client Name</th>
+					<th>Invoice Title</th>
+					<th>Address</th>
+					<th>Suburb</th>
+					<th>Service Date</th>
+					<th>Price</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="invoiceInfo in invoiceListData" ng-show="invoiceInfo.status==0" ng-click="toggleSelect($index)" ng-class="{'selected':invoiceInfo.selected}">
+					<td>{{invoiceInfo.clientName}}</td>
+					<td>{{invoiceInfo.invoiceTitle}}</td>
+					<td>{{invoiceInfo.address}}</td>
+					<td>{{invoiceInfo.suburb}}</td>
+					<td>{{invoiceInfo.serviceDate| date:'EEE, dd/MM/yyyy'}}</td>
+					<td>{{invoiceInfo.price| currency:'AUD$' }}</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="row bottom-actions-section">
+			<span class="bottom-action-button" ng-click="GenerateInvoice()">Generate Invoice</span>
+			<span class="bottom-action-button" ng-click="Reset()">Reset</span>
+		</div>
+
+		<div class="row form-divider">
+		</div>
+		<div class="module-section-body">
+			<div class="row" style="padding:0 10px">
+				<div style="float:left;font-size:20px;line-height:30px;">Invoice History</div>
+			</div>
+		</div>
+		<table class="invoice-list-table">
+			<thead>
+				<tr>
+					<th>Invoice Date</th>
+					<th>Client Name</th>
+					<th>Invoice Title</th>
+					<th>Address</th>
+					<th>Suburb</th>
+					<th>Total</th>
+					<th>GST</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="invoice in invoiceHistoryListData" ng-click="openInvoiceHistoryViewer($index)" ng-class="">
+					<td>{{invoice.invoiceDate| date:'dd/MM/yyyy'}}</td>
+					<td>{{invoice.clientName}}</td>
+					<td>{{invoice.invoiceTitle}}</td>
+					<td>{{invoice.address}}</td>
+					<td>{{invoice.suburb}}</td>
+					<td>{{invoice.total| currency:'AUD$' }}</td>
+					<td>{{invoice.gst | currency:'AUD$' }}</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+
+
+
+</div>

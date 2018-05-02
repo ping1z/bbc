@@ -1,0 +1,49 @@
+<div class="client-list module-container">
+	<div class="module-section">
+		<div class="module-section-header">
+			<span class="module-section-header-square">
+			</span>
+			<span class="module-section-header-title">
+			 Client List
+			</span>
+		</div>
+		<div class="module-section-body" style="padding-bottom: 5px;">
+			<div class="row" style="padding:0 5px">
+			<div class="client-list-search">
+				<div class="control-search">
+					<input class="control-search-input" type="text" ng-model="keyWord" ng-change="filter()">
+					<div class="control-search-button">Search</div>
+				</div>
+			</div>
+			<div class="client-list-create">
+				<div class="control-action-button"ng-click="clientListTmpl.createNewClient()">New Client</div>
+			</div>
+			</div>
+		</div>
+		<table class="client-list-table table-hover">
+		<thead>
+			<tr>
+                <th ng-click="order('isActive')">Active</th>
+				<th ng-click="order('name')">Client Name</th>
+				<th ng-click="order('tel')">TeL</th>
+				<th ng-click="order('address')">Address</th>
+                <th ng-click="order('suburb')">Suburb</th>
+				<th ng-click="order('jobDetail.frequency')">Frequency</th>
+                <th ng-click="order('price')">Price</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="client in clientListData | orderBy:predicate:reverse " ng-click="clientListTmpl.viewClientDetail(client._id)">
+                <td>{{client.isActive?'Yes':'No'}}</td>
+                <td>{{client.name}}</td>
+				<td>{{client.tel}}</td>
+				<td>{{client.address}}</td>
+                <td>{{client.suburb}}</td>
+				<td>{{client.jobDetail.frequency}}</td>
+                <td>{{client.price | currency:'AUD$' }}</td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+	
+</div>

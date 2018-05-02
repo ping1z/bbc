@@ -1,0 +1,70 @@
+<!-- Payment section -->
+<!-- Payment section -->
+<!-- Payment section -->
+<div class="module-section">
+	<div class="module-section-header">
+		<span class="module-section-header-square">
+		</span>
+		<span class="module-section-header-title">
+			Payment
+		</span>
+		<div ng-show="saveSection" class="module-section-button-group">
+			<span ng-show="!editMode && UserService.isAdmin()" class="module-section-button glyphicon glyphicon-edit" ng-click="editMode=true"></span>
+			<span ng-show="editMode" class="module-section-button glyphicon glyphicon-ok" ng-click="submit()"></span>
+		</div>
+	</div>
+	<div class="module-section-body">
+		<div class="row form-row">
+			<div class="col-xs-12 form-group">
+				<label for="payment" class="col-xs-2 form-control-label">Payment</label>
+				<div  class="col-xs-10">
+					<div ng-if="!editMode" name="payment">{{clientDetail.paymentType}}</div>
+
+                    <select ng-if="editMode" ng-model="clientDetail.paymentType">
+                        <option value="cash">Cash</option>
+                        <option value="cheque">Cheque</option>
+                        <option value="debt">Direct Debt</option>
+                    </select>
+				</div>
+			</div>
+		</div>
+		<div class="row form-divider">
+		</div>
+		<div class="row form-row">
+			<div class="col-xs-12 form-group">
+				<label class="col-xs-2 form-control-label">Invoice</label>
+				<div ng-if="!editMode" class="col-xs-10">
+					<div ng-show="clientDetail.invoiceNeeded==false">Not Needed</div>
+					<div ng-show="clientDetail.invoiceNeeded==true" class="col-xs-12 form-control-pair-item">
+						<label for="invoiceTitle" class="col-xs-2 form-control-label">Invoice Title</label>
+						<div class="col-xs-1">
+							<strong>-</strong>
+						</div>
+						<div class="col-xs-8">
+							<div name="petsInfo-keeping">{{clientDetail.invoiceTitle}}</div>
+						</div>
+					</div>
+				</div>
+				<!--<div ng-if="editMode" class="col-xs-4 form-control-radios">
+					<input type="radio" name="pets" ng-model="clientDetail.invoiceNeeded" class="form-control" value="No">No
+					<input type="radio" name="pets" ng-model="clientDetail.invoiceNeeded" class="form-control" value="Yes">Yes
+                </div>-->
+                <div ng-if="editMode" class="col-xs-4 btn-group">
+                    <label class="btn btn-default btn-xs" ng-class="{'btn-warning':clientDetail.invoiceNeeded}" ng-model="clientDetail.invoiceNeeded" btn-radio=true uncheckable>Yes</label>
+                    <label class="btn btn-default btn-xs" ng-class="{'btn-warning':!clientDetail.invoiceNeeded}" ng-model="clientDetail.invoiceNeeded" btn-radio=false uncheckable>No</label>
+                </div>
+
+				<div ng-if="editMode&&clientDetail.invoiceNeeded==true" class="col-xs-6 form-group form-group-sub-divider">
+					<div class="row" >
+						<div class="col-xs-10 form-group-sub">
+							<label for="invoiceTitle" class="col-xs-4 form-control-label">Invoice Title</label>
+							<div class="col-xs-8">
+								<input type="text" name="invoiceTitle"  ng-model="clientDetail.invoiceTitle" class="form-control" required="">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>															
+	</div>
+</div>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <%- include('shared/_header'); %>
+     <body>
+     <div class="login-bg">
+        <div class="login-logo">
+            BBC
+        </div>
+        <div class=" login-from-container">
+            <div class="login-from-header">
+                Staff Login
+            </div>
+            <form action="/login" method="post">
+                <div class="login-from-panel">
+                    <div class="login-from-row">
+                        <label class=" login-input-label" for="userIdentity">Username:</label>
+                        <input type="text" name="userIdentity" placeholder="Email" />
+                    </div>
+                    <div class="login-from-row">
+                        <label class=" login-input-label" for="password">Password:</label>
+                        <input type="password" name="password" placeholder="Password"  />
+                    </div>
+                </div>
+                <div class="login-from-row">
+                    <button type="submit" class="login-from-submit">login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+     <%- include('shared/_scripts'); %>
+    </body>
+</html>

@@ -1,0 +1,13 @@
+<div class="create-client module-container active">
+	<client-info-section-tmpl ng-model="clientDetail" data-edit-mode=true data-save-section=true></client-info-section-tmpl>
+	<job-detail-section-tmpl ng-model="clientDetail" data-client-id="{{clientDetail.id}}" data-edit-mode=true data-save-section=true></job-detail-section-tmpl>
+	<payment-section-tmpl ng-model="clientDetail" data-edit-mode=true data-save-section=true></payment-section-tmpl>
+    <reminder-info-section-tmpl ng-model="clientDetail" data-client-id="{{clientDetail.id}}" data-edit-mode=true data-save-section=true></reminder-info-section-tmpl>
+	<div ng-if="!editMode&& !hasSubmit;" class="row bottom-actions-section">
+		<span class="bottom-action-button" ng-click="Save()">Save</span>
+		<span class="bottom-action-button" ng-click="Reset()">Reset</span>
+	</div>
+	<!--<div ng-if="hasSubmit" class="row bottom-actions-section">
+		<span class="bottom-action-button-large" ng-click="Confirm()">Confirm</span>
+	</div>-->
+</div>

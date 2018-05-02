@@ -1,0 +1,63 @@
+<div class="module-section" ng-class="{'module-section-hidden':isHidden}">
+    <div class="module-section-header">
+		<span class="module-section-header-square">
+		</span>
+		<span class="module-section-header-title">
+			Notifications
+		</span>
+        <div class="module-section-button-group">
+            <span ng-show="!isHidden" class="module-section-button glyphicon glyphicon-chevron-up" ng-click="setHidden(true)"></span>
+            <span ng-show="isHidden" class="module-section-button glyphicon glyphicon glyphicon-chevron-down" ng-click="setHidden(false)"></span>
+        </div>
+    </div>
+    <div class="module-section-body" style="padding-bottom: 3px;">
+        <div class="row" style="padding:0 5px">
+            <div style="float:left;font-size:18px;line-height:22px;">Birthday</div>
+        </div>
+    </div>
+
+    <table class="service-list-table light">
+        <thead>
+        <tr>
+            <th ng-click="orderB('clientName')" >Client Name</th>
+            <th ng-click="orderB('date')"> Birthday Date</th>
+            <th ng-click="orderB('address')">Address</th>
+            <th ng-click="orderB('suburb')">Suburb</th>
+        </tr>
+        <thead>
+        <tbody>
+        <tr ng-repeat="notifyInfo in  birthdays | orderBy:predicateB:reverseB" ng-click="openNotifyViewer('birthday',$index)">
+            <td>{{notifyInfo.clientName}}</td>
+            <td>{{notifyInfo.date | date:'dd/MM/yyyy'}}</td>
+            <td>{{notifyInfo.address}}</td>
+            <td>{{notifyInfo.suburb}}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="module-section-body" style="padding-bottom: 3px;">
+        <div class="row" style="padding:5px 5px 0px 5px ">
+            <div style="float:left;font-size:18px;line-height:22px;">Spring Clean Reminder</div>
+        </div>
+    </div>
+        <table class="service-list-table light">
+            <thead>
+            <tr>
+                <th ng-click="orderC('clientName')">Client Name</th>
+                <th ng-click="orderC('address')">Address</th>
+                <th ng-click="orderC('suburb')">Suburb</th>
+                <th ng-click="orderC('date')">Remind Date</th>
+                <th>Items</th>
+            </tr>
+            <thead>
+            <tbody>
+            <tr ng-repeat="notifyInfo in cleans | orderBy:predicateC:reverseC " ng-click="openNotifyViewer('clean',$index)">
+                <td>{{notifyInfo.clientName}}</td>
+                <td>{{notifyInfo.address}}</td>
+                <td>{{notifyInfo.suburb}}</td>
+                <td>{{notifyInfo.date | date:'dd/MM/yyyy'}}</td>
+                <td>{{notifyInfo.items.join()}}</td>
+            </tr>
+            </tbody>
+        </table>
+</div>

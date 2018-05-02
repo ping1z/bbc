@@ -1,0 +1,101 @@
+<div class="client-detail module-container">
+    <div class="module-section">
+        <div class="module-section-header">
+		    <span class="module-section-header-square">
+		    </span>
+		    <span class="module-section-header-title">
+               Invoice Preview
+		    </span>
+        </div>
+        <div class="module-section-body">
+            <div class="row form-row">
+                <div class="col-xs-6 form-group">
+                    <label for="invoiceDate" class="col-xs-4 form-control-label">Invoice Date: </label>
+                    <div class="col-xs-8">
+                        <div ng-bind="invoiceHistory.invoiceDate | date:'dd/MM/yyyy' "></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-row">
+                <div class="col-xs-6 form-group">
+                    <label for="clientName" class="col-xs-4 form-control-label">Customer</label>
+                    <div class="col-xs-8">
+                        <div ng-bind="invoiceHistory.invoiceTitle"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-row">
+                <div class="col-xs-6 form-group">
+                    <label for="mobile" class="col-xs-4 form-control-label">Phone</label>
+                    <div class="col-xs-8">
+                        <div ng-bind="invoiceHistory.tel"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-row">
+                <div class="col-xs-6 form-group">
+                    <label for="address" class="col-xs-4 form-control-label">Address</label>
+                    <div class="col-xs-8">
+                        <div ng-bind="invoiceHistory.address +', '+invoiceHistory.suburb"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-row">
+                <div class="col-xs-6 form-group">
+                    <label for="email" class="col-xs-4 form-control-label">Email</label>
+                    <div class="col-xs-8">
+                        <div  ng-bind="invoiceHistory.email"></div>
+                    </div>
+                </div>
+            </div>
+
+            <table class="table table-condensed invoice-preview-list-table">
+                <thead>
+                <tr>
+                    <th>Service Date</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="invoiceItem in invoiceHistory.items">
+                    <td>{{invoiceItem.serviceDate | date:'dd/MM/yyyy'}}</td>
+                    <td>{{invoiceItem.description}}</td>
+                    <td>{{invoiceItem.price | currency:'AUD$' }}</td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="row form-row">
+                <div class="col-xs-5 col-xs-offset-7">
+                    <label for="email" class="col-xs-6 form-control-label">Total</label>
+                    <div class="col-xs-6">
+                        <div  ng-bind="invoiceHistory.total | currency:'AUD$'"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-row">
+                <div class="col-xs-5 col-xs-offset-7">
+                    <label for="email" class="col-xs-6 form-control-label">GST</label>
+                    <div class="col-xs-6">
+                        <div  ng-bind="invoiceHistory.gst | currency:'AUD$'"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-row">
+                <div class="col-xs-5 col-xs-offset-7">
+                    <label for="email" class="col-xs-6 form-control-label">Total inc GST</label>
+                    <div class="col-xs-6">
+                        <div  ng-bind="invoiceHistory.total + invoiceHistory.gst | currency:'AUD$'"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	<div class="row bottom-actions-section" ng-if="!hasSent">
+        <span class="bottom-action-button" ng-click="Send()">Send</span>
+        <span class="bottom-action-button" ng-click="Cancel()">Cancel</span>
+    </div>
+	<div class="row bottom-actions-section" ng-if="hasSent">
+        <span class="bottom-action-button-large" ng-click="OK()">OK</span>
+    </div>
+</div>

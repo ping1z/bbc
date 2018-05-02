@@ -1,0 +1,41 @@
+<div class="module-section">
+    <div class="module-section-header">
+		<span class="module-section-header-square">
+		</span>
+		<span class="module-section-header-title">
+			Services Calendar
+		</span>
+    </div>
+    <div class="module-section-body">
+        <div class="row service-list-row">
+            <div class="col-xs-6 form-group">
+                <div class="btn-group">
+                    <label class="btn btn-default btn-sm" ><strong>Filters</strong></label>
+                    <label class="btn btn-default btn-sm" ng-repeat='team in teamList' ng-class="{'btn-warning':filters[team.id]}" ng-model="filters[team.id]" btn-checkbox>{{team.name}}</label>
+
+                </div>
+            </div>
+        </div>
+        <div style="display: none" class="btn-group">
+            <label class="btn btn-default btn-sm" ><strong>Calendar View</strong></label>
+            <button class="btn btn-default btn-sm"  ng-class="{'btn-success':view=='agendaDay'}" ng-click="changeView('agendaDay', 'myCalendar1')"> Day </button>
+            <button class="btn btn-default btn-sm" ng-class="{'btn-success':view=='agendaWeek'}" ng-click="changeView('agendaWeek', 'myCalendar1')">Week</button>
+            <button class="btn btn-default btn-sm" ng-class="{'btn-success':view=='month'}" ng-click="changeView('month', 'myCalendar1')">Month</button>
+        </div>
+
+        <div class="calendar" ng-model="eventSources" calendar="serviceCalendar1"  calendar-watch-event="calenderWatcher" ui-calendar="uiConfig.calendar"></div>
+    </div>
+
+    <div class="service-notes-list">
+        <div class="module-section-header">
+		<span class="module-section-header-square">
+		</span>
+		<span class="module-section-header-title">
+			Services Notes
+		</span>
+        </div>
+        <ul>
+            <li ng-repeat="service in serviceEventList" ng-show="service.serviceInfo.notes!=''">{{service.serviceInfo.clientName +' - ' + service.serviceInfo.notes}}</li>
+        </ul>
+    </div>
+</div>

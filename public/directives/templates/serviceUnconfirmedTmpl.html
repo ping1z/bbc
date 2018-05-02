@@ -1,0 +1,27 @@
+<div class="module-section">
+    <div class="module-section-header">
+		<span class="module-section-header-square">
+		</span>
+		<span class="module-section-header-title">
+			Unconfirmed Services
+		</span>
+    </div>
+    <table class="service-list-table table-hover">
+		<thead>
+			<tr>
+				<th>Client Name</th>
+				<th>Service Date</th>
+				<th>Address</th>
+				<th>Team</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="service in unconfirmedServices" ng-click="ConfirmService($index)">
+				<td>{{service.clientName}}</td>
+				<td>{{service.serviceDate | date:'dd/MM/yyyy'}}</td>
+				<td>{{service.address}}</td>
+				<td>{{service.teamId}}</td>
+			</tr>
+		</tbody>
+    </table>
+</div>

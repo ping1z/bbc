@@ -1,0 +1,6 @@
+<div class="btn-group">
+    <button class="btn btn-success" ng-click="changeView('agendaDay', 'myCalendar1')">AgendaDay</button>
+    <button class="btn btn-success" ng-click="changeView('agendaWeek', 'myCalendar1')">AgendaWeek</button>
+    <button class="btn btn-success" ng-click="changeView('month', 'myCalendar1')">Month</button>
+</div>
+<div class="calendar" ng-model="eventSources" calendar="calendar1" ui-calendar="uiConfig.calendar"></div>

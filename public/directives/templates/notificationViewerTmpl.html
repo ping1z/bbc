@@ -1,0 +1,136 @@
+<div class="client-detail module-container">
+    <div class="module-section">
+        <div class="module-section-header">
+		    <span class="module-section-header-square">
+		    </span>
+		    <span class="module-section-header-title">
+                {{ notifyInfo.type=='birthday'?'Birthday Notification':'Spring Clean Reminder'}}
+		    </span>
+        </div>
+        <div class="module-section-body">
+            <div class="row form-row">
+                <div class="col-xs-6 form-group">
+                    <label for="clientName" class="col-xs-4 form-control-label">Client Name</label>
+                    <div class="col-xs-8">
+                        <div ng-bind="notifyInfo.clientName"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-row">
+                <div class="col-xs-6 form-group">
+                    <label for="mobile" class="col-xs-4 form-control-label">Mobile</label>
+                    <div class="col-xs-8">
+                        <div ng-bind="notifyInfo.tel"></div>
+                    </div>
+                </div>
+                <div class="col-xs-6 form-group">
+                    <label for="address" class="col-xs-4 form-control-label">Address</label>
+                    <div class="col-xs-6">
+                        <div ng-bind="notifyInfo.address"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-row">
+                <div class="col-xs-6 form-group">
+                    <label for="email" class="col-xs-4 form-control-label">Email</label>
+                    <div class="col-xs-8">
+                        <div  ng-bind="notifyInfo.email"></div>
+                    </div>
+                </div>
+                <div class="col-xs-6 form-group">
+                    <label for="suburb" class="col-xs-4 form-control-label">Suburb</label>
+                    <div class="col-xs-6">
+                        <div  ng-bind="notifyInfo.suburb"></div>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="notifyInfo.type=='birthday'">
+                <div class="row form-divider">
+                </div>
+                <div class="row form-row">
+                    <div  class="col-xs-6 form-group">
+                        <label for="birthday" class="col-xs-4 form-control-label">Birthday</label>
+                        <div class="col-xs-7 clean-reminder-item">
+                            <div ng-if="!editMode" ng-bind="notifyInfo.date | date:'dd/MM/yyyy' "></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="notifyInfo.type=='clean'">
+                <div class="row form-divider">
+                </div>
+                <div class="row form-row">
+                    <div ng-show="cleanItems['oven']" class="col-xs-6 form-group">
+                        <label for="oven" class="col-xs-4 form-control-label">Oven</label>
+                        <div class="col-xs-7 clean-reminder-item">
+                            <plugin-date-picker ng-if="editMode" placeholder="dd/MM/yyyy" ng-model ="cleanItems['oven']"></plugin-date-picker>
+                            <div ng-if="!editMode" ng-bind="cleanItems['oven'] | date:'dd/MM/yyyy' "></div>
+                        </div>
+                    </div>
+                    <div ng-show="cleanItems['blinds']" class="col-xs-6 form-group">
+                        <label for="blinds" class="col-xs-4 form-control-label">Blinds/Shutters</label>
+                        <div class="col-xs-7 clean-reminder-item">
+                            <plugin-date-picker ng-if="editMode" placeholder="dd/MM/yyyy" ng-model ="cleanItems['blinds']"></plugin-date-picker>
+                            <div ng-if="!editMode" ng-bind="cleanItems['blinds'] | date:'dd/MM/yyyy' "></div>
+                        </div>
+                    </div>
+                    <div ng-show="cleanItems['fridge']" class="col-xs-6 form-group">
+                        <label for="fridge" class="col-xs-4 form-control-label">Fridge</label>
+                        <div class="col-xs-7 clean-reminder-item">
+                            <plugin-date-picker ng-if="editMode" placeholder="dd/MM/yyyy" ng-model ="cleanItems['fridge']"></plugin-date-picker>
+                            <div ng-if="!editMode" ng-bind="cleanItems['fridge'] | date:'dd/MM/yyyy' "></div>
+                        </div>
+                    </div>
+                    <div ng-show="cleanItems['wardrobes']" class="col-xs-6 form-group">
+                        <label for="wardrobes" class="col-xs-4 form-control-label">Wardrobes</label>
+                        <div class="col-xs-7 clean-reminder-item">
+                            <plugin-date-picker ng-if="editMode" placeholder="dd/MM/yyyy" ng-model ="cleanItems['wardrobes']"></plugin-date-picker>
+                            <div ng-if="!editMode" ng-bind="cleanItems['wardrobes'] | date:'dd/MM/yyyy' "></div>
+                        </div>
+                    </div>
+                    <div ng-show="cleanItems['rangeHood']" class="col-xs-6 form-group">
+                        <label for="rangeHood" class="col-xs-4 form-control-label">Range Hood</label>
+                        <div class="col-xs-7 clean-reminder-item">
+                            <plugin-date-picker ng-if="editMode" placeholder="dd/MM/yyyy" ng-model ="cleanItems['rangeHood']"></plugin-date-picker>
+                            <div ng-if="!editMode" ng-bind="cleanItems['rangeHood'] | date:'dd/MM/yyyy' "></div>
+                        </div>
+                    </div>
+                    <div ng-show="cleanItems['windows']" class="col-xs-6 form-group">
+                        <label for="windows" class="col-xs-4 form-control-label">Windows</label>
+                        <div class="col-xs-7 clean-reminder-item">
+                            <plugin-date-picker ng-if="editMode" placeholder="dd/MM/yyyy" ng-model ="cleanItems['windows']"></plugin-date-picker>
+                            <div ng-if="!editMode" ng-bind="cleanItems['windows'] | date:'dd/MM/yyyy' "></div>
+                        </div>
+                    </div>
+                    <div ng-show="cleanItems['pantry']" class="col-xs-6 form-group">
+                        <label for="pantry" class="col-xs-4 form-control-label">Pantry</label>
+                        <div class="col-xs-7 clean-reminder-item">
+                            <plugin-date-picker ng-if="editMode" placeholder="dd/MM/yyyy" ng-model ="cleanItems['pantry']"></plugin-date-picker>
+                            <div ng-if="!editMode" ng-bind="cleanItems['pantry'] | date:'dd/MM/yyyy' "></div>
+                        </div>
+                    </div>
+                    <div ng-show="cleanItems['carpet']" class="col-xs-6 form-group">
+                        <label for="carpet" class="col-xs-4 form-control-label">Carpets clean</label>
+                        <div class="col-xs-7 clean-reminder-item">
+                            <plugin-date-picker ng-if="editMode" placeholder="dd/MM/yyyy" ng-model ="cleanItems['carpet']"></plugin-date-picker>
+                            <div ng-if="!editMode" ng-bind="cleanItems['carpet'] | date:'dd/MM/yyyy' "></div>
+                        </div>
+                    </div>
+                    <div ng-show="cleanItems['kitchen']" class="col-xs-6 form-group">
+                        <label for="kitchen" class="col-xs-4 form-control-label">Inside Kitchen Cupboards</label>
+                        <div class="col-xs-7 clean-reminder-item">
+                            <plugin-date-picker ng-if="editMode" placeholder="dd/MM/yyyy" ng-model ="cleanItems['kitchen']"></plugin-date-picker>
+                            <div ng-if="!editMode" ng-bind="cleanItems['kitchen'] | date:'dd/MM/yyyy' "></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	<div class="row bottom-actions-section">
+        <span class="bottom-action-button-large" ng-click="OK()">OK</span>
+    </div>
+
+	
+	
+</div>

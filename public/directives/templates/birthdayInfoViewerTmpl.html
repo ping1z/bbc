@@ -1,0 +1,55 @@
+<div class="client-detail module-container">
+    <div class="module-section">
+        <div class="module-section-header">
+		    <span class="module-section-header-square">
+		    </span>
+		    <span class="module-section-header-title">
+                Birthday Notification
+		    </span>
+        </div>
+        <div class="module-section-body">
+            <div class="row form-row">
+                <div class="col-xs-6 form-group">
+                    <label for="clientName" class="col-xs-4 form-control-label">Client Name</label>
+                    <div class="col-xs-8">
+                        <div ng-bind="notifyInfo.clientName"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-row">
+                <div class="col-xs-6 form-group">
+                    <label for="mobile" class="col-xs-4 form-control-label">Mobile</label>
+                    <div class="col-xs-8">
+                        <div ng-bind="notifyInfo.tel"></div>
+                    </div>
+                </div>
+                <div class="col-xs-6 form-group">
+                    <label for="address" class="col-xs-4 form-control-label">Address</label>
+                    <div class="col-xs-6">
+                        <div ng-bind="notifyInfo.address"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-row">
+                <div class="col-xs-6 form-group">
+                    <label for="email" class="col-xs-4 form-control-label">Email</label>
+                    <div class="col-xs-8">
+                        <div  ng-bind="notifyInfo.email">{{serviceInfo.email}}</div>
+                    </div>
+                </div>
+                <div class="col-xs-6 form-group">
+                    <label for="suburb" class="col-xs-4 form-control-label">Suburb</label>
+                    <div class="col-xs-6">
+                        <div  ng-bind="notifyInfo.suburb"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	<div class="row bottom-actions-section">
+        <span class="bottom-action-button-large" ng-click="OK()">OK</span>
+    </div>
+
+	
+	
+</div>

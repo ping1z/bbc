@@ -1,0 +1,108 @@
+<div class="client-detail module-container">
+    <div class="module-section">
+        <div class="module-section-header">
+		    <span class="module-section-header-square">
+		    </span>
+		    <span class="module-section-header-title">
+			    Unconfirmed Service Info
+		    </span>
+        </div>
+        <div class="module-section-body">
+            <div class="row form-row">
+                <div class="col-xs-6 form-group">
+                    <label for="clientName" class="col-xs-4 form-control-label">Client Name</label>
+                    <div class="col-xs-8">
+                        <div  ng-bind="clientInfo.clientName"></div>
+                    </div>
+                </div>
+                <div class="col-xs-6 form-group">
+                    <label for="clientTel" class="col-xs-4 form-control-label">Mobile</label>
+                    <div class="col-xs-8">
+                        <div  ng-bind="clientInfo.tel"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row form-row">
+                <div class="col-xs-6 form-group">
+                    <label for="paymentType" class="col-xs-4 form-control-label">Payment Type</label>
+                    <div class="col-xs-8">
+                        <div  ng-bind="clientInfo.paymentType"></div>
+                    </div>
+                </div>
+                <div class="col-xs-6 form-group">
+                    <label for="price" class="col-xs-4 form-control-label">Price</label>
+                    <div class="col-xs-8">
+                        <div  ng-bind="clientInfo.price | currency:'USD$'"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row form-row">
+                <div class="col-xs-6 form-group">
+                    <label for="frequency" class="col-xs-4 form-control-label">Frequency</label>
+                    <div class="col-xs-8">
+                        <div  ng-bind="clientInfo.jobDetail.frequency"></div>
+                    </div>
+                </div>
+                <div class="col-xs-6 form-group">
+                    <label for="Invoice" class="col-xs-4 form-control-label">Invoice</label>
+                    <div class="col-xs-8">
+                        <div>{{serviceInfo.invoiceNeeded?'Yes':'No'}}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row form-row">
+                <div class="col-xs-12 form-group">
+                    <label for="address" class="col-xs-2 form-control-label">Address</label>
+                    <div class="col-xs-9">
+                        <div  ng-bind="clientInfo.address"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-divider">
+            </div>
+            <div class="row form-row">
+                <div class="col-xs-6 form-group">
+                    <label for="serviceDate" class="col-xs-4 form-control-label">Service Date</label>
+                    <div class="col-xs-8">
+                        <div ng-if="serviceInfo.isConfirmed && !editMode " ng-bind="serviceInfo.serviceDate | date:'dd/MM/yyyy' "></div>
+                        <plugin-date-picker  ng-if="!serviceInfo.isConfirmed || editMode " placeholder="dd/MM/yyyy" ng-model ="serviceInfo.serviceDate"></plugin-date-picker>
+                    </div>
+                </div>
+                <div class="col-xs-6 form-group">
+                    <label for="teamId" class="col-xs-4 form-control-label">Team</label>
+                    <div class="col-xs-6">
+                        <div ng-if="serviceInfo.isConfirmed && !editMode " ng-bind="serviceInfo.teamId"></div>
+                        <input ng-if="!serviceInfo.isConfirmed || editMode" type="text" ng-model="serviceInfo.teamId" class="form-control" ng-value="{{serviceInfo.teamId}}" required>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-if="serviceInfo.status >= 2" class="row form-row">
+                <div class="col-xs-12 form-group">
+                    <label for="feedback" class="col-xs-2 form-control-label">feedback</label>
+                    <div class="col-xs-9">
+                        <textarea ng-if="editMode" type="text" ng-model="serviceInfo.feedback" class="form-control" rows=3>{{serviceInfo.feedback}}</textarea>
+                        <div ng-if="!editMode" ng-model="serviceInfo.feedback" d-multiline ></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <service-history-section-tmpl ng-model="serviceInfo.clientId" data-readonly=false></service-history-section-tmpl>
+
+    <div ng-if="!serviceInfo.isConfirmed" class="row bottom-actions-section">
+        <span class="bottom-action-button-large" ng-click="Confirm()">Confirm</span>
+    </div>
+
+    <div ng-if="serviceInfo.isConfirmed && !editMode" class="row bottom-actions-section">
+        <span class="bottom-action-button-large" ng-click="Edit()">Edit</span>
+    </div>
+
+    <div ng-if="serviceInfo.isConfirmed && editMode" class="row bottom-actions-section">
+        <span class="bottom-action-button-large" ng-click="Save()">Save</span>
+    </div>
+</div>
