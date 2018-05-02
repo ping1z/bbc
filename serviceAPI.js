@@ -2,7 +2,7 @@ const _ = require('lodash');
 const router = require('express').Router();
 const auth = require('./auth');
 const USER_ROLES = require('./constant').USER_ROLES;
-
+const logger = require('./logger');
 const mongoose = require('mongoose');
 const ServiceInfo = mongoose.model('ServiceInfo');
 const ServiceStatus = require('./models/ServiceInfo').ServiceStatus;
@@ -22,6 +22,7 @@ router.get('/history/:clientId*', auth.ensureLoggedIn(),
     p.then(function (r) {
       res.send(r);
     }).catch(function (e) {
+      logger.error(e);;
       res.send(500, e);
     });
   }
@@ -36,6 +37,7 @@ router.get('/notify/getNotifications', auth.ensureLoggedIn(),
     p.then(function (r) {
       res.send(r);
     }).catch(function (e) {
+      logger.error(e);
       res.send(500, e);
     });
   }
@@ -61,6 +63,7 @@ router.get('/notify/getNotificationGroups', auth.ensureLoggedIn(),
       });
       res.send(groups);
     }).catch(function (e) {
+      logger.error(e);
       res.send(500, e);
     });
   }
@@ -79,6 +82,7 @@ router.post('/saveOneOffService', auth.ensureLoggedIn(),
     p.then(function (r) {
       res.send("SUCCESS");
     }).catch(function (e) {
+      logger.error(e);
       res.send(500, e);
     });
   }
@@ -98,6 +102,7 @@ router.get('/listServiceByPeriod/:st/:et*', auth.ensureLoggedIn(),
     p.then(function (r) {
       res.send(r);
     }).catch(function (e) {
+      logger.error(e);
       res.send(500, e);
     });
   }
@@ -111,6 +116,7 @@ router.get('/getPublicHolidays', auth.ensureLoggedIn(),
     p.then(function (r) {
       res.send(r);
     }).catch(function (e) {
+      logger.error(e);
       res.send(500, e);
     });
   }

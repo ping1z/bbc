@@ -9,6 +9,7 @@ const Notification = mongoose.model('Notification');
 const InvoiceInfo = mongoose.model('InvoiceInfo');
 const InvoiceHistory = mongoose.model('InvoiceHistory');
 const InvoiceStatus = require('./constant').InvoiceStatus;
+const logger = require('./logger');
 
 router.get('/menuInfo', auth.ensureLoggedIn(),
   function (req, res) {
@@ -76,6 +77,7 @@ router.get('/client/getClientInfo/:clientId*', auth.ensureLoggedIn(),
     p.then(function (r) {
       res.send(r);
     }).catch(function (e) {
+      logger.error(e);
       res.send(500, e);
     });
   }
@@ -89,6 +91,7 @@ router.get('/client/getClientList', auth.ensureLoggedIn(),
     p.then(function (r) {
       res.send(r);
     }).catch(function (e) {
+      logger.error(e);
       res.send(500, e);
     });
   }
@@ -101,6 +104,7 @@ router.get('/client/createClient', auth.ensureLoggedIn(),
     p.then(function (r) {
       res.send(r);
     }).catch(function (e) {
+      logger.error(e);
       res.send(500, e);
     });
   }
@@ -109,6 +113,7 @@ router.get('/client/createClient', auth.ensureLoggedIn(),
 router.get('/client/deleteClientInfo/:clientId*', auth.ensureLoggedIn(),
   function (req, res) {
     if (!req.user.roles[USER_ROLES.ROLE_ADMIN]) {
+      logger.error(req.user.name + ": Action not allowed.");
       res.send(500, "Action not allowed.");
       return;
     }
@@ -116,6 +121,7 @@ router.get('/client/deleteClientInfo/:clientId*', auth.ensureLoggedIn(),
     p.then(function (r) {
       res.send(r);
     }).catch(function (e) {
+      logger.error(e);
       res.send(500, e);
     });
   }
@@ -124,6 +130,7 @@ router.get('/client/deleteClientInfo/:clientId*', auth.ensureLoggedIn(),
 router.post('/client/updateClientInfo', auth.ensureLoggedIn(),
   function (req, res) {
     if (!req.user.roles[USER_ROLES.ROLE_ADMIN] && !req.user.roles[USER_ROLES.ROLE_MANAGER]) {
+      logger.error(req.user.name + ": Action not allowed.");
       res.send(500, "Action not allowed.");
       return;
     }
@@ -154,6 +161,7 @@ router.post('/client/updateClientInfo', auth.ensureLoggedIn(),
       }
       res.send(r);
     }).catch(function (e) {
+      logger.error(e);
       res.send(500, e);
     });
   }
@@ -162,6 +170,7 @@ router.post('/client/updateClientInfo', auth.ensureLoggedIn(),
 router.post('/client/updateClientJobDetail', auth.ensureLoggedIn(),
   function (req, res) {
     if (!req.user.roles[USER_ROLES.ROLE_ADMIN] && !req.user.roles[USER_ROLES.ROLE_MANAGER]) {
+      logger.error(req.user.name + ": Action not allowed.");
       res.send(500, "Action not allowed.");
       return;
     }
@@ -173,6 +182,7 @@ router.post('/client/updateClientJobDetail', auth.ensureLoggedIn(),
     p.then(function (r) {
       res.send(r);
     }).catch(function (e) {
+      logger.error(e);
       res.send(500, e);
     });
   }
@@ -181,6 +191,7 @@ router.post('/client/updateClientJobDetail', auth.ensureLoggedIn(),
 router.post('/client/updateClientReminderInfo', auth.ensureLoggedIn(),
   function (req, res) {
     if (!req.user.roles[USER_ROLES.ROLE_ADMIN] && !req.user.roles[USER_ROLES.ROLE_MANAGER]) {
+      logger.error(req.user.name + ": Action not allowed.");
       res.send(500, "Action not allowed.");
       return;
     }
@@ -194,11 +205,13 @@ router.post('/client/updateClientReminderInfo', auth.ensureLoggedIn(),
         try {
           Notification.UpdateCleanNotify(r);
         } catch (e) {
+          logger.error(e);
           res.send(500, e);
         }
       }
       res.send(r);
     }).catch(function (e) {
+      logger.error(e);
       res.send(500, e);
     });
   }
@@ -207,6 +220,7 @@ router.post('/client/updateClientReminderInfo', auth.ensureLoggedIn(),
 router.post('/client/updateClientPaymentInfo', auth.ensureLoggedIn(),
   function (req, res) {
     if (!req.user.roles[USER_ROLES.ROLE_ADMIN] && !req.user.roles[USER_ROLES.ROLE_MANAGER]) {
+      logger.error(req.user.name + ": Action not allowed.");
       res.send(500, "Action not allowed.");
       return;
     }
@@ -220,6 +234,7 @@ router.post('/client/updateClientPaymentInfo', auth.ensureLoggedIn(),
     p.then(function (r) {
       res.send(r);
     }).catch(function (e) {
+      logger.error(e);
       res.send(500, e);
     });
   }
@@ -228,6 +243,7 @@ router.post('/client/updateClientPaymentInfo', auth.ensureLoggedIn(),
 router.post('/client/saveFullClientInfo', auth.ensureLoggedIn(),
   function (req, res) {
     if (!req.user.roles[USER_ROLES.ROLE_ADMIN] && !req.user.roles[USER_ROLES.ROLE_MANAGER]) {
+      logger.error(req.user.name + ": Action not allowed.");
       res.send(500, "Action not allowed.");
       return;
     }
@@ -267,6 +283,7 @@ router.post('/client/saveFullClientInfo', auth.ensureLoggedIn(),
       }
       res.send(r);
     }).catch(function (e) {
+      logger.error(e);
       res.send(500, e);
     });
   }
@@ -280,6 +297,7 @@ router.get('/client/getClientComments/:clientId*', auth.ensureLoggedIn(),
     p.then(function (r) {
       res.send(r);
     }).catch(function (e) {
+      logger.error(e);
       res.send(500, e);
     });
   }
@@ -299,6 +317,7 @@ router.post('/client/postClientComment', auth.ensureLoggedIn(),
     p.then(function (r) {
       res.send(r);
     }).catch(function (e) {
+      logger.error(e);
       res.send(500, e);
     });
   }
@@ -310,6 +329,7 @@ router.post('/client/deleteClientComment', auth.ensureLoggedIn(),
     let user = req.user;
     // TO-DO not admin or author 
     if (!req.user.roles[USER_ROLES.ROLE_ADMIN]) {
+      logger.error(req.user.name + ": Action not allowed.");
       res.send(500, "Action not allowed.");
       return;
     }
@@ -317,6 +337,7 @@ router.post('/client/deleteClientComment', auth.ensureLoggedIn(),
     p.then(function (r) {
       res.send(r);
     }).catch(function (e) {
+      logger.error(e);
       res.send(500, e);
     });
   }
@@ -343,6 +364,7 @@ router.get('/invoice/getMonthlyInvoice/:YMStr', auth.ensureLoggedIn(),
     p.then(function (r) {
       res.send(r);
     }).catch(function (e) {
+      logger.error(e);
       res.send(500, e);
     });
   }
@@ -362,6 +384,7 @@ router.get('/invoice/getInvoiceHistory/:YMStr', auth.ensureLoggedIn(),
     p.then(function (r) {
       res.send(r);
     }).catch(function (e) {
+      logger.error(e);
       res.send(500, e);
     });
   }
@@ -420,6 +443,7 @@ router.post('/invoice/sendInvoice/', auth.ensureLoggedIn(),
         throw e;
       });
     }).catch(function (e) {
+      logger.error(e);
       res.send(500, e);
     });
   }
@@ -439,6 +463,7 @@ router.get("/client/previewClientInfo/:clientId*", auth.ensureLoggedIn(),
       let html = Util.generateHtml("/tmpl/client_preview.ejs", data);
       res.send(html);
     }).catch(function (e) {
+      logger.error(e);
       res.send(500, e);
     });
   });
@@ -476,7 +501,7 @@ router.get("/client/confirmClientInfo/:clientId*", auth.ensureLoggedIn(),
         });
       });
     }).catch(function (e) {
-      console.log(e);
+      logger.error(e);
       res.send(500, e);
     });
   });

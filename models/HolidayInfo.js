@@ -2,7 +2,7 @@ const _ = require('lodash');
 const mongoose = require('mongoose');
 const http = require("http");
 const Schema = mongoose.Schema;
-
+const logger = require('../logger');
 const HolidayInfoSchema = new Schema({
   title: { type: String, default: "" },
   start: { type: String, default: "" },
@@ -42,7 +42,7 @@ HolidayInfoSchema.statics.loadHolidayData = function () {
     });
 
   }).on("error", (e) => {
-    console.error(e.message);
+    logger.error(e);
     throw e;
   });
 }

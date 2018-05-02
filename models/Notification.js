@@ -2,6 +2,7 @@ const _ = require('lodash');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const Util = require('../util');
+const logger = require('../logger');
 const NotificationType = {
   Birthday: "birthday",
   Clean: "clean",
@@ -141,7 +142,7 @@ NotificationSchema.statics.UpdateCleanNotify = function (client) {
       throw e;
     });
   } catch (e) {
-    console.log(e);
+    logger.error(e);
     throw e;
   }
 }

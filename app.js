@@ -1,7 +1,7 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var models = require('./models');
-
+var logger = require('./logger');
 var app = express();
 var port = process.env.PORT || 3000;
 
@@ -14,8 +14,8 @@ if (!MONGO_URI) {
 mongoose.Promise = global.Promise;
 mongoose.connect(MONGO_URI);
 mongoose.connection
-  .once('open', () => console.log('Connected to MongoLab instance.'))
-  .on('error', error => console.log('Error connecting to MongoLab:', error));
+  .once('open', () => logger.info('Connected to MongoLab instance.'))
+  .on('error', error => logger.error('Error connecting to MongoLab:', error));
 
 //initialize authorization module
 var auth = require('./auth');
@@ -34,5 +34,5 @@ app.set('view engine', 'ejs');
 app.use('/public', express.static('public'))
 
 app.listen(port, function () {
-  console.log('Surprise listening on port 3000!')
+  logger.info('bbc listening on port 3000!');
 })

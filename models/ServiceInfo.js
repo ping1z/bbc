@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-
+const logger = require('../logger');
 const JobDetailSchema = require('./JobDetail');
 const FrequencyType = require('../constant').FrequencyType;
 const ServiceStatus = require('../constant').ServiceStatus;
@@ -44,7 +44,7 @@ ServiceInfoSchema.statics.findLastRegularService = function (clientId, cb) {
       throw e;
     });
   } catch (e) {
-    console.error(e);
+    logger.error(e);
     throw e;
   }
 }

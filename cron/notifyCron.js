@@ -1,6 +1,7 @@
-var cronJob = require('cron').CronJob;
+const cronJob = require('cron').CronJob;
 const _ = require('lodash');
-var models = require('../models');
+const models = require('../models');
+const logger = require('../logger');
 const mongoose = require('mongoose');
 const Client = mongoose.model('Client');
 const Notification = mongoose.model('Notification');
@@ -17,8 +18,11 @@ mongoose.connection
   .once('open', () => console.log('Connected to MongoLab instance.'))
   .on('error', error => console.log('Error connecting to MongoLab:', error));
 
-var job = new cronJob('*/5 * * * * *', function () {
-  console.log("start Notify Job...");
+// every month 
+//var schedule = '0 0 0 0 * *';
+var schedule = '*/5 * * * * *';
+var job = new cronJob(schedule, function () {
+  logger.info("start [Notify] Job...");
   let p = Client.find({ isActive: true }).exec();
   p.then(function (r) {
     _.forEach(r, function (c) {
@@ -26,8 +30,9 @@ var job = new cronJob('*/5 * * * * *', function () {
       Notification.UpdateCleanNotify(c);
     });
   }).catch(function (e) {
-    console.error(e);
+    logger.error(e);
   });
 });
 
 job.start();
+module.exports = job;

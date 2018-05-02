@@ -1,6 +1,7 @@
-var cronJob = require('cron').CronJob;
+const cronJob = require('cron').CronJob;
 const _ = require('lodash');
-var models = require('../models');
+const models = require('../models');
+const logger = require('../logger');
 const mongoose = require('mongoose');
 const Client = mongoose.model('Client');
 const ServiceInfo = mongoose.model('ServiceInfo');
@@ -25,10 +26,13 @@ const toAusTime = function (date) {
   return new Date(date.getTime() + 3600000 * 10);
 }
 
-// every month
-var job = new cronJob('*/5 * * * * *', function () {
+// everyday 1:05 am
+//var schedule = '0 5 1 * * *';
+//var schedule = '*/5 * * * * *';
+var schedule = '0 0 1 * * *';
+var job = new cronJob(schedule, function () {
   try {
-    console.log("start Service Job...");
+    logger.info("start [Post Service] Job...");
     let p = ServiceInfo.find({
       status: ServiceStatus.Pending,
       serviceDate: {
@@ -81,8 +85,9 @@ var job = new cronJob('*/5 * * * * *', function () {
       throw e;
     });
   } catch (e) {
-    console.error(e);
+    logger.error(e);
   };
 });
 
 job.start();
+module.exports = job;
