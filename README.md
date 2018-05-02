@@ -7,9 +7,9 @@ npm install
 ```
 # Project Overview
 ## Client-side
-  Single-page Application in angularJS
+  Single-page Application in angularJS<br>
 ## server-side
-  node.js
-  expressJS
-  Ejs
-  mongodb base on http://mlab.com
+  node.js<br>
+  expressJS<br>
+  Ejs<br>
+  mongodb base on http://mlab.com<br>
