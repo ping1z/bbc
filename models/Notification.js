@@ -82,47 +82,47 @@ NotificationSchema.statics.UpdateBirthdayNotify = function (client) {
 
 const UpdateCleanNotify = function (client) {
   let Notification = mongoose.model('Notification');
-    let rInfo = client.reminderInfo;
-    let nInfoList = {};
-    for (let key in rInfo) {
-      if (_.endsWith(key, "Date") && rInfo[key] != null) {
-        date = rInfo[key];
-        let today = Util.toAusTime(new Date());
-        if (date.getUTCFullYear() == today.getUTCFullYear()
-          && date.getUTCMonth() == today.getUTCMonth()) {
-          let dateMD = date.getUTCMonth() + "-" + date.getUTCDay();
-          let nInfo;
-          if (nInfoList[dateMD]) {
-            nInfo = nInfoList[dateMD];
-          } else {
-            nInfo = new Notification({
-              clientId: client._id,
-              type: NotificationType.Clean,
-              status: NotificationStatus.Unconfirmed,
-              date: date,
-              title: "Clean - " + client.name,
-              clientName: client.name,
-              tel: client.tel,
-              email: client.email,
-              address: client.address,
-              suburb: client.suburb,
-            });
-          }
-          itemKey = key.substring(0, key.length - 4);
-          nInfo.items.push(itemKey);
-          nInfo.title += " " + itemKey;
-          nInfoList[dateMD] = nInfo;
+  let rInfo = client.reminderInfo;
+  let nInfoList = {};
+  for (let key in rInfo) {
+    if (_.endsWith(key, "Date") && rInfo[key] != null) {
+      date = rInfo[key];
+      let today = Util.toAusTime(new Date());
+      if (date.getUTCFullYear() == today.getUTCFullYear()
+        && date.getUTCMonth() == today.getUTCMonth()) {
+        let dateMD = date.getUTCMonth() + "-" + date.getUTCDay();
+        let nInfo;
+        if (nInfoList[dateMD]) {
+          nInfo = nInfoList[dateMD];
+        } else {
+          nInfo = new Notification({
+            clientId: client._id,
+            type: NotificationType.Clean,
+            status: NotificationStatus.Unconfirmed,
+            date: date,
+            title: "Clean - " + client.name,
+            clientName: client.name,
+            tel: client.tel,
+            email: client.email,
+            address: client.address,
+            suburb: client.suburb,
+          });
         }
+        itemKey = key.substring(0, key.length - 4);
+        nInfo.items.push(itemKey);
+        nInfo.title += " " + itemKey;
+        nInfoList[dateMD] = nInfo;
       }
     }
+  }
 
-    let p = Notification.collection.insert(_.values(nInfoList));
+  let p = Notification.collection.insert(_.values(nInfoList));
 
-    p.then(function (r) {
-      // saved
-    }).catch(function (e) {
-      throw e;
-    });
+  p.then(function (r) {
+    // saved
+  }).catch(function (e) {
+    throw e;
+  });
 }
 
 NotificationSchema.statics.UpdateCleanNotify = function (client) {

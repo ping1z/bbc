@@ -14,9 +14,9 @@ if (!MONGO_URI) {
 mongoose.Promise = global.Promise;
 mongoose.connect(MONGO_URI);
 mongoose.connection
-    .once('open', () => console.log('Connected to MongoLab instance.'))
-    .on('error', error => console.log('Error connecting to MongoLab:', error));
-    
+  .once('open', () => console.log('Connected to MongoLab instance.'))
+  .on('error', error => console.log('Error connecting to MongoLab:', error));
+
 //initialize authorization module
 var auth = require('./auth');
 auth.init(app);
@@ -26,8 +26,8 @@ var router = require('./router');
 var api = require('./api');
 var serviceAPI = require('./serviceAPI');
 app.use('/', router);
-app.use('/api',api);
-app.use('/api/service',serviceAPI);
+app.use('/api', api);
+app.use('/api/service', serviceAPI);
 
 app.set('view engine', 'ejs');
 

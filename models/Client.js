@@ -18,29 +18,28 @@ const ClientSchema = new Schema({
   startDate: { type: Date, default: Date.now },
   startPrice: Number,
   serviceDate: { type: Date, default: Date.now },
-  serviceTime: {type: String, default: "10:00"},
+  serviceTime: { type: String, default: "10:00" },
   price: Number,
   notes: String,
-  paymentType: {type: String, default: "cash"},
+  paymentType: { type: String, default: "cash" },
   invoiceNeeded: Boolean,
   invoiceTitle: String,
-  jobDetail: {type: JobDetailSchema, default: new JobDetail()},
-  reminderInfo: {type: ReminderInfoSchema, default: new ReminderInfo()},
+  jobDetail: { type: JobDetailSchema, default: new JobDetail() },
+  reminderInfo: { type: ReminderInfoSchema, default: new ReminderInfo() },
   creatorId: String,
   createdTime: { type: Date, default: Date.now },
   lastModifiedTime: { type: Date, default: Date.now },
   available: Boolean,
 });
 
-var generateClientRef = function()
-{
-    randNum = ("00000000" + Math.random() * 99999999).slice(-8);
-    ref = randNum.slice(0, 4) + '-' + randNum.slice(4);
+var generateClientRef = function () {
+  randNum = ("00000000" + Math.random() * 99999999).slice(-8);
+  ref = randNum.slice(0, 4) + '-' + randNum.slice(4);
 
-    return ref;
+  return ref;
 }
 
-ClientSchema.statics.createClient = function() {
+ClientSchema.statics.createClient = function () {
   const Client = mongoose.model('Client');
   newClient = new Client();
   newClient.ref = generateClientRef();
@@ -50,11 +49,11 @@ ClientSchema.statics.createClient = function() {
   return promise;
 };
 
-ClientSchema.statics.updateInfo = function(id, updates) {
+ClientSchema.statics.updateInfo = function (id, updates) {
   const Client = mongoose.model('Client');
   updates.lastModifiedTime = Date.now();
   updates.available = true;
-  return Client.findByIdAndUpdate(id, updates, {new: true});
+  return Client.findByIdAndUpdate(id, updates, { new: true });
 }
 
 module.exports = mongoose.model('Client', ClientSchema);

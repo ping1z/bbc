@@ -3,9 +3,9 @@ const Schema = mongoose.Schema;
 
 const ClientCommentSchema = new Schema({
   clientId: String,
-  authorId: {type:String, default:""},
-  authorName: {type:String, default:""},
-  authorTitle: {type:String, default:""},
+  authorId: { type: String, default: "" },
+  authorName: { type: String, default: "" },
+  authorTitle: { type: String, default: "" },
   createdTime: { type: Date, default: Date.now },
   content: String,
 });

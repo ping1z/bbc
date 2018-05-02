@@ -56,8 +56,8 @@ Authorize.prototype.init = function (app) {
   app.use(passport.session());
 };
 Authorize.prototype.ensureLoggedIn = function (options) {
-  
-  if( !options) {
+
+  if (!options) {
     options = {}
   }
   if (typeof options == 'string') {

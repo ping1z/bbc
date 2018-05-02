@@ -86,4 +86,3 @@ var job = new cronJob('*/5 * * * * *', function () {
 });
 
 job.start();
-//module.exports = job;
